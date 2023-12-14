@@ -1,0 +1,21 @@
+
+<div *ngFor="let recipe of Recipes; let i =index">
+    <h2>{{recipe.name}}</h2>
+    <h4>{{recipe.country}}</h4>
+    <p>{{recipe.cooking_time}}</p>
+    <p>{{recipe.baking_time}}</p>
+    <p>{{recipe.status}}</p>
+    <section class="ingredients section">
+        <h4>Ingredients</h4>
+        <div *ngFor="let ingredient of recipe.ingredients; let i= index">
+            <p>{{ingredient.name}}</p>
+            <p>{{ingredient.quantity}}</p>
+        </div>
+    </section>
+    <section class="steps section">
+        <h4>Étapes</h4>
+        <div *ngFor="let step of recipe.steps; let i= index">
+            <p>{{step.name}}</p>
+        </div>
+    </section>
+</div>

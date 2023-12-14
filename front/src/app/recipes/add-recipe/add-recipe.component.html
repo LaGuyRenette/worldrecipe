@@ -1,0 +1,41 @@
+<form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+    <section class ="formGroup">
+        <label>Nom de la recette</label>
+            <input type="text" formControlName="name" required/>
+        <label>Pays</label>
+            <input type="text" formControlName="country" required/>
+        <label>Temps de Préparation</label>
+            <input type="number" formControlName="cooking_time" required/>
+        <label>Temps de Cuisson</label>
+            <input type="number" formControlName="baking_time" required/>
+        <label>Status</label>
+            <input type="text" formControlName="status" required/>
+    </section>
+
+    <section class="FormGroup">
+        <h3>Ingredients</h3>
+            <div formArrayName="ingredients">
+                <div *ngFor="let ingredient of ingredientsFormArray.controls, let i = index">
+                    <div [formGroupName]="i">
+                        <input type="text" formControlName="name" required/>
+                        <input type ="number" formControlName="quantity" required/>
+                        <button type="button" (click) ="deleteIngredient(i)">-</button>
+                    </div>
+                </div>
+                <button type="button" (click)="addIngredient()">+</button>
+            </div>
+    </section>
+    <section class="FormGroup">
+        <h3>Étapes</h3>
+            <div formArrayName="steps">
+                <div *ngFor="let step of stepsFormArray.controls; let i = index">
+                    <div [formGroupName]="i">
+                        <input type="text" formControlName="name" required/>
+                        <button type="button" (click) ="deleteStep(i)">-</button>
+                    </div>
+                </div>
+                <button type="button" (click)="addStep()">+</button>
+            </div>
+        <button type="submit">OK!</button>
+    </section>
+</form>
