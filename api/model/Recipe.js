@@ -10,22 +10,31 @@ let Recipe = new Schema({
         type: String,
          required: true
         },
-    ingredients:[{
+    ingredients:[
+        {
         name: String,
+        category: String,
         quantity: Number,
-        }],
+        unit: String
+        }
+    ],
+    diets: [{
+        value: String,
+    }],
     steps: [{
         name: String,
         }],
-    cooking_time: {
-        type: Number,
-         required: true},
-    baking_time: {
-        type: Number
-        },
+    time:[
+        {
+        cooking_time: Number,
+        cooking_time_unit: String,
+        baking_time: Number,
+        baking_time_unit: String,
+        }
+    ],
     status: {
         type: String,
-        required: true},
+    },
     created_at: {
         type: Date,
         default: Date.now

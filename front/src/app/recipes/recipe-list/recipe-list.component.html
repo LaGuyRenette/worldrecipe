@@ -2,14 +2,23 @@
 <div *ngFor="let recipe of Recipes; let i =index">
     <h2>{{recipe.name}}</h2>
     <h4>{{recipe.country}}</h4>
-    <p>{{recipe.cooking_time}}</p>
-    <p>{{recipe.baking_time}}</p>
-    <p>{{recipe.status}}</p>
+    <div *ngFor="let time of recipe.time; let i =index">
+        <p>{{time.cooking_time}}</p>
+        <p>{{time.cooking_time_unit}}</p>
+        <p>{{time.baking_time}}</p>
+    </div>
+
+    <p>{{recipe.diet}}</p>
+    <div *ngFor="let diet of recipe.diets; let i = index">
+        <p>{{diet.value}}</p>
+    </div>
     <section class="ingredients section">
         <h4>Ingredients</h4>
-        <div *ngFor="let ingredient of recipe.ingredients; let i= index">
-            <p>{{ingredient.name}}</p>
-            <p>{{ingredient.quantity}}</p>
+        <div  *ngFor="let ingredient of recipe.ingredients; let i = index">
+                <p>{{ingredient.name}}</p>
+                <p>{{ingredient.category}}</p>
+                <p>{{ingredient.quantity}}</p>
+                <p>{{ingredient.unit}}</p>
         </div>
     </section>
     <section class="steps section">
@@ -18,4 +27,6 @@
             <p>{{step.name}}</p>
         </div>
     </section>
+    <button (click)="goToRecipe(recipe._id)">voir</button>
+    <button>Supprimer</button>
 </div>

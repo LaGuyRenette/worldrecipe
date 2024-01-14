@@ -1,16 +1,25 @@
 <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
-    <section class ="formGroup">
+    <div class ="formGroup">
         <label>Nom de la recette</label>
             <input type="text" formControlName="name" required/>
         <label>Pays</label>
             <input type="text" formControlName="country" required/>
-        <label>Temps de Préparation</label>
-            <input type="number" formControlName="cooking_time" required/>
-        <label>Temps de Cuisson</label>
-            <input type="number" formControlName="baking_time" required/>
-        <label>Status</label>
-            <input type="text" formControlName="status" required/>
-    </section>
+            <div formArrayName="time">
+                <div *ngFor="let time of timeFormArray.controls; let i = index">
+                    <div [formGroupName]="i">
+                        <label>Temps de Préparation</label>
+                        <input type="number" formControlName="cooking_time" required />
+                        <select formControlName="cooking_time_unit" required>
+                            <option *ngFor="let unit of cooking_time_unit" [value]="unit.value">{{ unit.label }}</option>
+                        </select>
+                        <label>Temps de Cuisson</label>
+                        <input type="number" formControlName="baking_time" required />
+                        <select formControlName="baking_time_unit" required>
+                            <option *ngFor="let unit of baking_time_unit" [value]="unit.value">{{ unit.label }}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
 
     <section class="FormGroup">
         <h3>Ingredients</h3>
@@ -19,11 +28,31 @@
                     <div [formGroupName]="i">
                         <input type="text" formControlName="name" required/>
                         <input type ="number" formControlName="quantity" required/>
+                        <select formControlName="category" required>
+                            <option *ngFor="let category of categoryOption" [value]="category.value">{{ category.value }}</option>
+                        </select>
+                        <select formControlName="unit" required>
+                            <option *ngFor="let unit of unitOptions" [value]="unit.value">{{ unit.label }}</option>
+                        </select>
                         <button type="button" (click) ="deleteIngredient(i)">-</button>
                     </div>
                 </div>
                 <button type="button" (click)="addIngredient()">+</button>
             </div>
+    </section>
+    <section class="FormGroup">
+        <H3>Régime Alimentaire</H3>
+        <div formArrayName="diets">
+            <div *ngFor="let diet of dietFormArray.controls, let i = index">
+                <div [formGroupName]="i">
+                    <select formControlName="value" required>
+                        <option *ngFor="let diet of dietOptions" [value]="diet.value">{{ diet.value }}</option>
+                    </select>
+                    <button type="button" (click) ="deleteDiet(i)">-</button>
+                </div>
+            </div>
+            <button type="button" (click)="addDiet()">+</button>
+        </div>
     </section>
     <section class="FormGroup">
         <h3>Étapes</h3>
@@ -38,4 +67,5 @@
             </div>
         <button type="submit">OK!</button>
     </section>
+    </div>
 </form>

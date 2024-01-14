@@ -1,11 +1,14 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
+const session = require("express-session");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const createError = require("http-errors");
+require('dotenv').config();
+const mongoUrl = process.env.MONGO_URL;
 
-mongoose.connect("mongodb://127.0.0.1:27017/yumami")
+mongoose.connect(mongoUrl)
     .then((x) => {
         console.log(
             `connected to Mongo! Database name: "${x.connections[0].name}"`
@@ -15,6 +18,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/yumami")
     });
 
 const recipeRoute = require ('./routes/recipe.route');
+const userRoute = require("./routes/auth");
 const app = express();
 app.use(bodyParser.json());
 app.use(
@@ -22,6 +26,12 @@ app.use(
         extended: false,
     })
 );
+
+app.use(session({
+    secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
+    saveUninitialized:true,
+    resave: false 
+}));
 app.use(cors());
 
 app.use( 
@@ -30,6 +40,7 @@ app.use(
 
 //API root
 app.use("/api", recipeRoute);
+app.use("/api", userRoute);
 //PORT
 const port = process.env.PORT || 8000;
 app.listen(port, () => {

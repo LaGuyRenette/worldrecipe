@@ -1,7 +1,7 @@
 import { HttpClient,HttpErrorResponse,HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Recipe } from './Recipe';
-import { Observable, catchError, map, throwError } from 'rxjs';
+import { Observable, catchError, map, tap, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +31,9 @@ export class CrudRecipeService {
 GetRecipe(id: any){
   let API_URL = `${this.API_URL}/read-recipe/${id}`;
   return this.httpClient.get(API_URL, {headers: this.HttpHeaders}).pipe(
+    tap((res: any) => {
+      console.log('Raw data from server:', res);
+    }),
     map((res :any) => {
       return res || {};
       }),

@@ -1,1 +1,29 @@
-<p>recipe-detail works!</p>
+<app-recipe-nav></app-recipe-nav>
+<h4>{{Recipe?.country}} - {{Recipe?.name}}</h4>
+
+<div *ngFor="let time of Recipe.time; let i =index">
+    <h4>Temps de Prépation</h4>
+    <p>{{time.cooking_time}} {{time.cooking_time_unit}}</p>
+    <h4>Temps de Cuisson</h4>
+    <p>{{time.baking_time}} {{time.baking_time_unit}}</p>
+</div>
+    <div *ngFor="let diet of Recipe.diets; let i = index">
+        <h3>{{diet.value}}</h3>
+    </div>
+    <section class="ingredients section">
+        <h4>Ingredient</h4>
+    <div *ngFor="let ingredient of Recipe.ingredients; let i = index">
+        <p></p>
+        <p>{{ingredient.category}}</p>
+        <p>{{ingredient.quantity}} {{ingredient.unit}} {{ingredient.name}} </p>
+    </div>
+</section>
+<section class="steps section">
+<h4>Étapes</h4>
+<div *ngFor="let step of Recipe.steps; let i= index">
+    <p>{{step.name}}</p>
+</div>
+</section>
+
+
+

@@ -3,12 +3,24 @@ import { RouterModule, Routes } from '@angular/router';
 import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
 import { AddRecipeComponent } from './recipes/add-recipe/add-recipe.component';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
+import { LoginComponent } from './account/login/login.component';
+import { CreateAccountComponent } from './account/create-account/create-account.component';
+import { HomeComponent } from './public/home/home.component';
+import { RecipeNavComponent } from './recipes/recipe-nav/recipe-nav.component';
+import { RecipeIngredientComponent } from './recipes/recipe-ingredient/recipe-ingredient.component';
+import { RecipeStepComponent } from './recipes/recipe-step/recipe-step.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'add-recipe' },
+  { path: '', component: HomeComponent },
   { path: 'recipe-list', component: RecipeListComponent },
   { path: 'add-recipe', component: AddRecipeComponent },
-  { path: 'edit-recipe/:id', component: RecipeDetailComponent },
+  { path: 'read-recipe/:id', component: RecipeDetailComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'create-account', component: CreateAccountComponent },
+  { path: 'detail', component: RecipeDetailComponent },
+  { path: 'ingredient', component: RecipeIngredientComponent},
+  { path: 'step', component: RecipeStepComponent }
+
 
 ];
 

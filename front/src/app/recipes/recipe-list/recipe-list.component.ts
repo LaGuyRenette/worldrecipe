@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CrudRecipeService } from 'src/app/service/crud-recipe.service';
 
 @Component({
@@ -8,8 +9,13 @@ import { CrudRecipeService } from 'src/app/service/crud-recipe.service';
 })
 export class RecipeListComponent {
 Recipes: any = [];
+getId: any;
 
-constructor(private crudService: CrudRecipeService){
+constructor(
+  private crudService: CrudRecipeService,
+  private router: Router,
+  private activatedRoute: ActivatedRoute
+  ){
   this.crudService.GetRecipes().subscribe((data: any) => {
     this.Recipes = data.data;
   });
@@ -21,5 +27,10 @@ delete(id:any, i:any){
       this.Recipes.splice(i, 1);
     })
   }
+}
+goToRecipe(_id: string) {
+  this.crudService.GetRecipe(_id).subscribe((data: any) => {
+    this.router.navigate([`read-recipe/${_id}`]); 
+})
 }
 }
