@@ -12,15 +12,12 @@ yarn-error.log
 
 # Dossiers Node.js
 /api/node_modules
-
 /front/node_modules
 
 #Variable d'environment
-/api/.env
-.env
-/front/src/environments
-/front/src/environments/environment.development.ts
-
+api/.env
+front/src/environment/
+front/src/environment/environement.development.ts
 
 # Dossier Angular Cache
 /front/.angular/cache
