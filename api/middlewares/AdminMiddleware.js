@@ -26,6 +26,7 @@ const AdminMiddleware = async(req, res, next) =>{
                 res.status(400).json({message: 'access forbidden'})
             }
         }else {
+            throw new Error("error :user not found")
             res.status(404).json({message: 'User Not found'});
         }
 

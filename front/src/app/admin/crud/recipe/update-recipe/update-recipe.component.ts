@@ -1,14 +1,16 @@
-import { Component, NgZone, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormArray, FormControl, Form } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Component, NgZone } from '@angular/core';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CrudRecipeService } from 'src/app/service/recipe/crud-recipe.service';
 
 @Component({
-  selector: 'app-add-recipe',
-  templateUrl: './add-recipe.component.html',
-  styleUrls: ['./add-recipe.component.scss']
+  selector: 'app-update-recipe',
+  templateUrl: './update-recipe.component.html',
+  styleUrls: ['./update-recipe.component.scss']
 })
-export class AddRecipeComponent implements OnInit{
+export class UpdateRecipeComponent {
+  Recipe: any;
+  recipeId: any;
   recipeForm : FormGroup;
   categoryOption = [
     {value: 'Viande'},
@@ -60,10 +62,12 @@ export class AddRecipeComponent implements OnInit{
     public formBuilder: FormBuilder,
     private router: Router,
     private ngZone: NgZone,
-    private crudService: CrudRecipeService
+    private crudService: CrudRecipeService,
+    private route: ActivatedRoute
   ){
 
     this.recipeForm = this. formBuilder.group({
+      
       name: ['', Validators.required],
       country: ['', Validators.required],
       ingredients: this.formBuilder.array([
@@ -94,7 +98,22 @@ export class AddRecipeComponent implements OnInit{
       ]),
     });
   }
-  ngOnInit(){ }
+  ngOnInit(){
+     //GET THE ID WITH URL PARAM
+  this.route.paramMap.subscribe(params => {
+    this.recipeId = params.get('id');
+      this.crudService.GetRecipe(this.recipeId).subscribe((data: any) => {
+        console.log('Processed data in component:', data);
+        this.Recipe = data.data;
+
+        if (this.Recipe && this.recipeForm) {
+         this.recipeForm.patchValue(this.Recipe)
+        }else{
+          console.log('recipeId is undefined')
+        }
+      });
+    });
+  }
 
   get dietFormArray(){
     return this.recipeForm.get('diets')as FormArray;
@@ -150,10 +169,11 @@ export class AddRecipeComponent implements OnInit{
     console.log('Form validity:', this.recipeForm.valid);
     console.log('Form errors:', this.recipeForm.errors);
     console.log('Form controls validity:', this.recipeForm.controls);
-
-    this.crudService.AddRecipe(this.recipeForm.value).subscribe(
+    console.log(this.recipeId)
+    this.crudService.updateRecipe(this.recipeId ,this.recipeForm.value).subscribe(
       (res: any) => {
         console.log('Recipe added!yeah!' + res);
+
         this.ngZone.run(() => this.router.navigateByUrl('/recipes'));
       },
       (err : any) => {
@@ -162,3 +182,4 @@ export class AddRecipeComponent implements OnInit{
     );
   }
 }
+

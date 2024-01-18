@@ -1,0 +1,11 @@
+<h2>Dashboard</h2>
+<h3>Recettes </h3>
+    <div *ngFor="let recipe of Recipes; let i =index">
+        <h2>{{recipe.name}}</h2>
+        <h4>{{recipe.country}}</h4>
+        <button (click)="goToUpdateRecipe(recipe._id)">voir</button>
+    </div>
+<h3>Utilisateurs</h3>
+<p>et ici il y'a le nom de mes utilisateurs </p>
+
+

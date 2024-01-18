@@ -1,8 +1,8 @@
 import { HttpClient,HttpErrorResponse,HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Recipe } from '../Recipe';
+import { Recipe } from '../../models/Recipe';
 import { Observable, catchError, map, tap, throwError } from 'rxjs';
-import { environment } from 'src/environments/environment.development';
+import { environment } from 'src/environment/environment.developement';
 
 @Injectable({
   providedIn: 'root'

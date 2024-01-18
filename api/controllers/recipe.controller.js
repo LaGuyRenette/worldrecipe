@@ -86,7 +86,9 @@ export const getRandomRecipe = async (req,res) =>{
 
 //UPDATE RECIPE
 export const updateRecipe = async (req, res, next) => {
+    console.log(req.params)
     try{
+
         await Recipe.findByIdAndUpdate(req.params.id, {
             $set : req.body,
         })

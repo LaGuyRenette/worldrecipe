@@ -4,41 +4,39 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AddRecipeComponent } from './recipes/add-recipe/add-recipe.component';
-import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
-import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
-import { LoginComponent } from './account/login/login.component';
-import { CreateAccountComponent } from './account/create-account/create-account.component';
-import { HeaderComponent } from './public/header/header.component';
+import { RecipeDetailComponent } from './public/recipe/recipe-detail/recipe-detail.component';
+import { RecipeListComponent } from './public/recipe/recipe-list/recipe-list.component';
+import { LoginComponent } from './public/account/login/login.component';
+import { CreateAccountComponent } from './public/account/create-account/create-account.component';
+import { HeaderComponent } from './shared/header/header.component';
 import { HomeComponent } from './public/home/home.component';
-import { RecipeIngredientComponent } from './recipes/recipe-ingredient/recipe-ingredient.component';
-import { RecipeNavComponent } from './recipes/recipe-nav/recipe-nav.component';
-import { RecipeStepComponent } from './recipes/recipe-step/recipe-step.component';
-import { NavComponent } from './shared/nav/nav.component';
+import { RecipeNavComponent } from './public/recipe/recipe-nav/recipe-nav.component';
 import { HttpRequestInterceptor } from './interceptors/http-request.interceptor';
+import { NavigationComponent } from './shared/navigation/navigation.component';
+import { AdminModule } from './admin/admin.module';
+import { AccountDashboardComponent } from './public/account/account-dashboard/account-dashboard.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddRecipeComponent,
     RecipeDetailComponent,
     RecipeListComponent,
     LoginComponent,
     CreateAccountComponent,
     HeaderComponent,
     HomeComponent,
-    RecipeIngredientComponent,
     RecipeNavComponent,
-    RecipeStepComponent,
-    NavComponent
+    NavigationComponent,
+    AccountDashboardComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AdminModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true}],
   bootstrap: [AppComponent]
