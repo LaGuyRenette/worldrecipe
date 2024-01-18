@@ -20,6 +20,7 @@ export class AuthServiceService {
     return this.httpClient
     .post(API_URL,user)
     .pipe(catchError(this.handleError))
+    console.log("vieux authservice a supprimer")
   }
 //LOGIN
   login(user: User) : Observable<any>{

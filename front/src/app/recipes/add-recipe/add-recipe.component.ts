@@ -1,7 +1,7 @@
 import { Component, NgZone, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray, FormControl, Form } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CrudRecipeService } from 'src/app/service/crud-recipe.service';
+import { CrudRecipeService } from 'src/app/service/recipe/crud-recipe.service';
 
 @Component({
   selector: 'app-add-recipe',
@@ -154,7 +154,7 @@ export class AddRecipeComponent implements OnInit{
     this.crudService.AddRecipe(this.recipeForm.value).subscribe(
       (res: any) => {
         console.log('Recipe added!yeah!' + res);
-        this.ngZone.run(() => this.router.navigateByUrl('/recipe-list'));
+        this.ngZone.run(() => this.router.navigateByUrl('/recipes'));
       },
       (err : any) => {
         console.log(err);

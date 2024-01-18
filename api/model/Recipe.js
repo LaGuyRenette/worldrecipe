@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-let Recipe = new Schema({
+let RecipeSchema = new Schema({
     name:{
         type: String, 
         required: true
@@ -47,4 +47,5 @@ let Recipe = new Schema({
 },{
     collection: 'Recipes'
 })
-module.exports = mongoose.model('Recipe', Recipe)
+const Recipe = mongoose.model('Recipe', RecipeSchema);
+export default Recipe;

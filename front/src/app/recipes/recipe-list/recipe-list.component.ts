@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CrudRecipeService } from 'src/app/service/crud-recipe.service';
+import { CrudRecipeService } from 'src/app/service/recipe/crud-recipe.service';
 
 @Component({
   selector: 'app-recipe-list',
@@ -16,11 +16,10 @@ constructor(
   private router: Router,
   private activatedRoute: ActivatedRoute
   ){
-  this.crudService.GetRecipes().subscribe((data: any) => {
-    this.Recipes = data.data;
+  this.crudService.GetRecipes().subscribe((res: any) => {
+    this.Recipes = res.data;
   });
 }
-ngOnInit(){}
 delete(id:any, i:any){
   if(window.confirm('Sur.e de vouloir supprimer?')) {
     this.crudService.deleteRecipe(id).subscribe((data: any) => {
@@ -29,8 +28,8 @@ delete(id:any, i:any){
   }
 }
 goToRecipe(_id: string) {
-  this.crudService.GetRecipe(_id).subscribe((data: any) => {
-    this.router.navigate([`read-recipe/${_id}`]); 
+  this.crudService.GetRecipe(_id).subscribe((res: any) => {
+    this.router.navigate([`recipe/${_id}`]); 
 })
 }
 }

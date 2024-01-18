@@ -12,7 +12,15 @@ yarn-error.log
 
 # Dossiers Node.js
 /api/node_modules
+
 /front/node_modules
+
+#Variable d'environment
+/api/.env
+.env
+/front/src/environments
+/front/src/environments/environment.development.ts
+
 
 # Dossier Angular Cache
 /front/.angular/cache
@@ -23,7 +31,7 @@ yarn-error.log
 .idea/
 .project
 .classpath
-.c9/
+.c9/g
 *.launch
 .settings/
 *.sublime-workspace

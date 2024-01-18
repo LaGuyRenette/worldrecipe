@@ -12,12 +12,11 @@ import { RecipeStepComponent } from './recipes/recipe-step/recipe-step.component
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'recipe-list', component: RecipeListComponent },
+  { path: 'recipes', component: RecipeListComponent },
   { path: 'add-recipe', component: AddRecipeComponent },
-  { path: 'read-recipe/:id', component: RecipeDetailComponent },
+  { path: 'recipe/:id', component: RecipeDetailComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'create-account', component: CreateAccountComponent },
-  { path: 'detail', component: RecipeDetailComponent },
+  { path: 'register', component: CreateAccountComponent },
   { path: 'ingredient', component: RecipeIngredientComponent},
   { path: 'step', component: RecipeStepComponent }
 

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddRecipeComponent } from './recipes/add-recipe/add-recipe.component';
@@ -14,6 +14,8 @@ import { HomeComponent } from './public/home/home.component';
 import { RecipeIngredientComponent } from './recipes/recipe-ingredient/recipe-ingredient.component';
 import { RecipeNavComponent } from './recipes/recipe-nav/recipe-nav.component';
 import { RecipeStepComponent } from './recipes/recipe-step/recipe-step.component';
+import { NavComponent } from './shared/nav/nav.component';
+import { HttpRequestInterceptor } from './interceptors/http-request.interceptor';
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import { RecipeStepComponent } from './recipes/recipe-step/recipe-step.component
     HomeComponent,
     RecipeIngredientComponent,
     RecipeNavComponent,
-    RecipeStepComponent
+    RecipeStepComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,7 @@ import { RecipeStepComponent } from './recipes/recipe-step/recipe-step.component
     ReactiveFormsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/service/User';
-import { AuthServiceService } from 'src/app/service/auth-service.service';
+import { AuthService } from 'src/app/service/auth/auth.service';
 
 @Component({
   selector: 'app-create-account',
@@ -13,7 +13,7 @@ export class CreateAccountComponent {
   registerForm: FormGroup;
 
   constructor(
-    private authService: AuthServiceService,
+    private authService: AuthService,
     private formBuilder: FormBuilder,
     private router: Router){
 
@@ -29,11 +29,11 @@ onSubmit(){
     this.authService.register(this.registerForm.value)
     .subscribe({
     next: (result) => {
-      console.log('userAdded' + result);
+      console.log('userAdded' , result);
       
     },
     error:(error)=>{
-      console.error('erreur' + error);
+      console.error('error is:' , error);
     },
     complete: () => {
       this.router.navigateByUrl('/login');

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CrudRecipeService } from 'src/app/service/crud-recipe.service';
+import { CrudRecipeService } from 'src/app/service/recipe/crud-recipe.service';
 
 @Component({
   selector: 'app-recipe-step',

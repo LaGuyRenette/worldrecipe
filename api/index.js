@@ -1,70 +1,47 @@
-const express = require("express");
-const path = require("path");
-const mongoose = require("mongoose");
-const session = require("express-session");
-const cors = require("cors");
-const bodyParser = require("body-parser");
-const createError = require("http-errors");
-require('dotenv').config();
-const mongoUrl = process.env.MONGO_URL;
+import express  from 'express';
+import cors from 'cors'
+import cookieParser from 'cookie-parser';
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import AuthRoute from './routes/auth.route.js';
+import RecipeRoute from'./routes/recipe.route.js';
 
-mongoose.connect(mongoUrl)
+dotenv.config();
+const mongoUrl = process.env.MONGO_URL;
+const port = process.env.PORT || 8000;
+
+const corsOptions = {
+    origin: "http://localhost:4200",
+    credentials: true,
+    methods:"GET, HEAD, OPTIONS, PUT, PATCH, POST, DELETE",
+    optionsSuccessStatus: 204,
+    allowedHeaders: "Content-Type",
+
+};
+
+const app = express ();
+//MIDDLEWARE
+app
+    .use(express.urlencoded({extended: false}))
+    .use(express.json())
+    .use(cookieParser())
+    .use(cors(corsOptions));
+
+//ROUTE
+app.use(AuthRoute)
+app.use(RecipeRoute)
+
+//MONGODB CONNECTION
+mongoose.connect(`${mongoUrl}`)
     .then((x) => {
         console.log(
             `connected to Mongo! Database name: "${x.connections[0].name}"`
             );
     }).catch((err) => {
-        console.error("Error connecting to Mongo", err.reason);
+        console.error("Error connecting to Mongo", err);
     });
 
-const recipeRoute = require ('./routes/recipe.route');
-const userRoute = require("./routes/auth");
-const app = express();
-app.use(bodyParser.json());
-app.use(
-    bodyParser.urlencoded({
-        extended: false,
-    })
-);
-
-app.use(session({
-    secret: "thisismysecrctekeyfhrgfgrfrty84fwir767",
-    saveUninitialized:true,
-    resave: false 
-}));
-app.use(cors());
-
-app.use( 
-    express.static(path.join(__dirname, "dist/yumami"))
-);
-
-//API root
-app.use("/api", recipeRoute);
-app.use("/api", userRoute);
-//PORT
-const port = process.env.PORT || 8000;
+//START SERVER
 app.listen(port, () => {
-    console.log("Listening on port" + port);
+    console.log(`Listening on http://localhost:${port}`);
 });
-//404
-app.use((req, res, next) => {
-    next(createError(404));
-})
-
-//Base Route
-app.get("/", (req, res) => {
-    res.send("Invalid endpoint")
-});
-
-app.get ("*", (req, res) => {
-    res.sendFile(
-        path.join(__dirname, "dist/yumami/index.html")
-    );
-});
-
-app.use(function( err, req, res, next) {
-    console.error(err.message);
-    if(!err.statusCode) err.statusCode = 500;
-    res.status(err.statusCode).send(err.message);
-});
-    

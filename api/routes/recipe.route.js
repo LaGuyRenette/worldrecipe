@@ -1,77 +1,33 @@
-const express = require('express');
-const app = express();
-const recipeRoute = express.Router();
-let Recipe = require("../model/Recipe");
+import  express from "express";
+import { 
+    createRecipe ,
+    getAllRecipes, 
+    getOneRecipe, 
+    updateRecipe, 
+    deleteRecipe, 
+    getRandomRecipe} from "../controllers/recipe.controller.js";
+import AdminMiddleware from "../middlewares/AdminMiddleware.js";
 
-//CREATE
-recipeRoute.route("/add-Recipe").post(async(req, res, next) => {
-    await Recipe.create(req.body)
-        .then((result)=>{
-            res.json({
-                data:result,
-                message: "Data added!yeah!",
-                status:200,
-            });
-        })
-        .catch((err) => {
-            return next(err);
-        });
-});
+const RecipeRoute = express.Router();
+
+//SHARED ROUTE
 
 //GET ALL
-recipeRoute.route('/').get(async(req, res, next) => {
-    await Recipe.find()
-    .then((result) => {
-        res.json({
-            data: result,
-            message: "All the Receipe fetched successfully! yeah! ",
-            status:200,
-        });
-    }).catch((err) => {
-        return next(err);
-    });
-});
+RecipeRoute.route('/recipes').get(getAllRecipes)
 //GET ONE
-recipeRoute.route("/read-recipe/:id").get(async(req, res, next) => {
-    await Recipe.findById(req.params.id)
-    .then((result) => {
-        res.json({
-            data: result,
-            message: " recipe successfully read",
-            status: 200,
-        });
-    })
-    .catch((err) => {
-        return next(err);
-    });
-});
+RecipeRoute.route("/recipe/:id").get(getOneRecipe)
+//GET RANDOM RECIPE
+RecipeRoute.route('/random-recipe').get(getRandomRecipe)
+
+
+//ADMIN ROUTE
+//CREATE
+RecipeRoute.route("/add-recipe").post(AdminMiddleware, createRecipe )
 
 //UPDATE
-recipeRoute.route("/update-recipe/:id").put(async( req, res, next) =>  {
-    await Recipe.findByIdAndUpdate(req.params.id, {
-        $set : req.body,
-    })
-    .then((result) => {
-        res.json({
-            data: result,
-            message: "Data updated successfully"
-        });
-    })
-    .catch((err) => {
-        console.log(err);
-    });
-});
+RecipeRoute.route("/update-recipe/:id").put(AdminMiddleware, updateRecipe)
 
 //DELETE
-recipeRoute.route("/delete-recipe/:id").delete(async (req, res, next) => {
-    await Recipe.findByIdAndDelete(req.params.id)
-    .then(() => {
-        res.json({
-            message: "Data successfully deleted"
-        });
-    })
-    .catch((err) => {
-        console.log(err);
-    })
-})
-module.exports = recipeRoute;
+RecipeRoute.route("/delete-recipe/:id").delete(AdminMiddleware, deleteRecipe)
+
+export default RecipeRoute;
