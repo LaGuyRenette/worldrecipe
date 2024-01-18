@@ -16,6 +16,7 @@ yarn-error.log
 
 #Variable d'environment
 api/.env
+.env
 front/src/environment/
 front/src/environment/environement.development.ts
 
