@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from 'src/app/service/auth/auth.service';
 
 @Component({
   selector: 'app-account-dashboard',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./account-dashboard.component.scss']
 })
 export class AccountDashboardComponent {
+  constructor(
+    private authService: AuthService,
+    
+  ){
+    
+  }
 
 }

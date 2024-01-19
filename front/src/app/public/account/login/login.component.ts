@@ -40,7 +40,9 @@ onSubmit(){
     }
     },
     complete: () => {
+      this.authService.me().subscribe();
       this.router.navigateByUrl('/');
+      
     }
   });
   }else{

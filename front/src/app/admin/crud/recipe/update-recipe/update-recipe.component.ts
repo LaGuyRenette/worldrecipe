@@ -181,5 +181,16 @@ export class UpdateRecipeComponent {
       }
     );
   }
+  delete(){
+    if(window.confirm('Sur.e de vouloir supprimer?')) {
+      this.crudService.deleteRecipe(this.recipeId).subscribe(
+        (res: any) => {
+        console.log("recette deleted", res)
+        this.ngZone.run(() => this.router.navigateByUrl('/dashboard'))
+      }, (error) =>{
+        console.log(error)
+      })
+    }
+  }
 }
 

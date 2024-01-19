@@ -7,17 +7,36 @@ import TokenBlackList from "../model/TokenBlackList.js";
 dotenv.config();
 
       //LOGOUT
-      export const logout = async (req, res) => {
+      export const handlelogout = async (req, res) => {
         try{
-       req.method ==='GET' && req.path ==='/logout'
+       if(req.method ==='GET' && req.path ==='/logout'){
+         console.log("inside handlelogout")
         const token = req.cookies.access;
         TokenBlackList.create({ token: token });
+        console.log("before sending response")
+        res.clearCookie('access')
         res.json({ message: "logout" });
+        console.log("after sending response")
+       }
       }catch (error){
+        console.log("erreur:", error.message)
         res.status(500).json({ error : error.message})
-
       }
       };
+
+      //ME
+      export const handleMe = async (req, res ) =>{
+        console.log("inside handleMe")
+        try{
+          if(req.path === "/me"){
+            console.log("user not connected")
+            res.json({message: true})
+          }
+        }catch(error){
+          console.log("erreur /me")
+          res.status(500).json({error: error.message})
+        }
+      }
       
       //ADMIN => verify connexion & role admin
       export const handleAdmin = async(req , res) =>{

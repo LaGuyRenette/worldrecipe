@@ -64,7 +64,6 @@ export class CreateRecipeComponent {
   ){
 
     this.recipeForm = this. formBuilder.group({
-      _id: [''],
       name: ['', Validators.required],
       country: ['', Validators.required],
       ingredients: this.formBuilder.array([
@@ -155,9 +154,6 @@ export class CreateRecipeComponent {
     this.crudService.AddRecipe(this.recipeForm.value).subscribe(
       (res: any) => {
         console.log('Recipe added!yeah!' + res);
-        if(res && res._id){
-          this.recipeForm.patchValue({id: res._id})
-        }
         this.ngZone.run(() => this.router.navigateByUrl('/recipes'));
       },
       (err : any) => {
