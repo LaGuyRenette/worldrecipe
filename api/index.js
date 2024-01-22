@@ -5,6 +5,8 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import AuthRoute from './routes/auth.route.js';
 import RecipeRoute from'./routes/recipe.route.js';
+import UserRoute from './routes/user.route.js';
+
 
 dotenv.config();
 const mongoUrl = process.env.MONGO_URL;
@@ -30,6 +32,7 @@ app
 //ROUTE
 app.use(AuthRoute)
 app.use(RecipeRoute)
+app.use(UserRoute)
 
 //MONGODB CONNECTION
 mongoose.connect(`${mongoUrl}`)

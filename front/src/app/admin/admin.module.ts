@@ -7,6 +7,7 @@ import { UpdateRecipeComponent } from './crud/recipe/update-recipe/update-recipe
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UpdateUserComponent } from './crud/user/update-user/update-user.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NavComponent } from './nav/nav/nav.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CreateRecipeComponent,
     UpdateRecipeComponent,
     DashboardComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    NavComponent
   ],
   imports: [
     CommonModule,

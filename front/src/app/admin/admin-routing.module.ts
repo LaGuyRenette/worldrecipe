@@ -6,7 +6,7 @@ import { UpdateUserComponent } from './crud/user/update-user/update-user.compone
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
-  { path: 'create-recipe', component: CreateRecipeComponent },
+  { path: 'create-recipe', component: CreateRecipeComponent},
   { path: 'update-recipe/:id', component: UpdateRecipeComponent },
   { path: 'update-user', component: UpdateUserComponent },
   { path :'dashboard', component: DashboardComponent }

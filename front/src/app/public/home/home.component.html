@@ -3,4 +3,10 @@
     le  dé monde
 </h2>
 <button (click)="playRecipe()">dé</button>
+<section *ngIf="Recipe">
+    <h3>{{Recipe.name}}</h3>
+    <h5>{{Recipe.country}}</h5>
+    <button (click)="goToRecipe(Recipe._id)">miam!</button>
+    <button (click) = "playRecipe()">Nop!</button>
+</section>
 

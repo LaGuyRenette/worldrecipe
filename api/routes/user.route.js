@@ -1,5 +1,5 @@
 import express from "express";
-import { deleteUser, getAllUsers, getOneUser, updateUser } from "../controllers/user.controller";
+import { deleteUser, getAllUsers, getOneUser, updateUser } from "../controllers/user.controller.js";
 
 const UserRoute = express.Router();
 
@@ -16,4 +16,4 @@ UserRoute.route("/update-user/:id").put(updateUser)
 //DELETE
 UserRoute.route("/delete-user/:id").delete(deleteUser)
 
-export default UserRoute.js
+export default UserRoute;

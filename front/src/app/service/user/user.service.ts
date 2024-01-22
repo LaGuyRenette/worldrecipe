@@ -18,6 +18,7 @@ export class UserService {
 
   //GET ALL USERS
   GetAllUsers() {
+    console.log("fetch users :")
     return this.httpClient.get(`${environment.API}users`)
   }
 

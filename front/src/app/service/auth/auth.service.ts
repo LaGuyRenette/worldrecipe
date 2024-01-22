@@ -14,7 +14,9 @@ export class AuthService {
 
 
   constructor(
-    private http: HttpClient) { }
+    private http: HttpClient) {
+      this.handleLoginStatus();
+     }
 
     register(credentials: FormGroup): Observable<any>{
       console.log("nouveau auth service")
@@ -25,6 +27,7 @@ export class AuthService {
       console.log("authservice")
       return this.http.post(`${environment.API}login`, credentials);
     }
+
 
     logout():Observable<any>{
       console.log("logout front auth service")
@@ -38,4 +41,15 @@ export class AuthService {
         );
         
     }
+    
+    handleLoginStatus(){
+      this.me().subscribe({
+        next: (res)=> {
+          this.isLoggedEmitter.emit(res)
+        },
+        error: (error) => {
+          this.isLoggedEmitter.emit(false)
+        }
+    })
+  }
 }

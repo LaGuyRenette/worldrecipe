@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, OnInit } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -15,6 +15,7 @@ import { HttpRequestInterceptor } from './interceptors/http-request.interceptor'
 import { NavigationComponent } from './shared/navigation/navigation.component';
 import { AdminModule } from './admin/admin.module';
 import { AccountDashboardComponent } from './public/account/account-dashboard/account-dashboard.component';
+import { AuthService } from './service/auth/auth.service';
 
 
 
@@ -42,4 +43,11 @@ import { AccountDashboardComponent } from './public/account/account-dashboard/ac
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule implements OnInit {
+  constructor( 
+    private authService : AuthService)
+  {}
+ ngOnInit(){
+   this.authService.handleLoginStatus();
+ }
+  }

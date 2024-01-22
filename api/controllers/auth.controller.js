@@ -29,7 +29,7 @@ dotenv.config();
         console.log("inside handleMe")
         try{
           if(req.path === "/me"){
-            console.log("user not connected")
+            console.log("user is connected")
             res.json({message: true})
           }
         }catch(error){
