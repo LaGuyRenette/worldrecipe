@@ -40,7 +40,7 @@ onSubmit(){
     }
     },
     complete: () => {
-      this.authService.me().subscribe();
+      this.authService.handleMe().subscribe();
       this.router.navigateByUrl('/');
       
     }

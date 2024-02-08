@@ -1,1 +1,137 @@
-/* You can add global styles to this file, and also import other style files */
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$yumami-primary: mat.define-palette(mat.$indigo-palette);
+$yumami-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$yumami-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$yumami-theme: mat.define-light-theme((
+  color: (
+    primary: $yumami-primary,
+    accent: $yumami-accent,
+    warn: $yumami-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($yumami-theme);
+
+//FONT 
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+h1{
+    font-family: 'Rubik';
+    font-weight: 900 ;
+    font-size: 24px;
+    color:rgb(30, 29, 29);
+    text-transform: uppercase;
+    text-align: center;
+}
+
+h2{
+    font-family: 'Rubik';
+    font-weight: 700 ;
+    color:#0D382E;
+}
+
+h3{
+    font-family: 'Montserrat';
+    font-weight: 600 ;
+    font-size: 24px;
+    color:rgb(30, 29, 29);
+    text-transform: uppercase;
+}
+
+h4{
+    font-family: 'Rubik';
+    font-weight: 300 ;
+    font-size: 24px;
+    color:rgb(30, 29, 29);
+    text-transform: uppercase;
+
+}
+
+h5{
+    font-family: 'Rubik';
+    font-weight: 700 ;
+    font-size: 15px;
+
+}
+
+h6{
+    font-family: 'Montserrat';
+    font-weight: 500 ;
+    font-size: 16px;
+    color:rgb(30, 29, 29);
+    text-transform: uppercase;
+
+}
+
+p{
+    font-family: 'Montserrat';
+    font-weight: 500 ;
+    font-size: 15px;
+    color:rgb(30, 29, 29);
+
+}
+label{
+    font-family: 'Montserrat';
+    font-weight: 800 ;
+    font-size: 17px;
+    color:rgb(30, 29, 29);
+}
+option{
+    font-family: 'Montserrat';
+    font-weight:400 ;
+    font-size: 14px;
+    color:rgb(30, 29, 29);
+}
+
+select{
+    font-family: 'Montserrat';
+    font-weight:600 ;
+    font-size: 14px;
+    color:rgb(30, 29, 29);
+}
+a{
+    font-family: Rubik;
+    font-size: 17px;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-decoration: none
+}
+
+button{
+    border-radius: 5px;
+    font-family: Rubik;
+    font-size: 15px;
+    text-transform: uppercase;
+    font-weight: 700;
+    border: 0;
+}
+
+html, body { height: 100%; }
+body { 
+
+    margin: 1rem; 
+    margin-top:6rem;
+    font-family: Roboto, "Helvetica Neue", sans-serif; }

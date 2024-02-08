@@ -1,12 +1,31 @@
+<section class="home-content">
 <h2>
     Partez à l’aventure culinaire en lançant
     le  dé monde
 </h2>
-<button (click)="playRecipe()">dé</button>
-<section *ngIf="Recipe">
-    <h3>{{Recipe.name}}</h3>
-    <h5>{{Recipe.country}}</h5>
-    <button (click)="goToRecipe(Recipe._id)">miam!</button>
-    <button (click) = "playRecipe()">Nop!</button>
+<button (click)="playRecipe()" class="world-button"  *ngIf="!Recipe" >Monde</button>
+
+<section *ngIf="Recipe" class="card-recipe">
+
+    <h5>{{Recipe.name}} - {{Recipe.country}}</h5>
+    <article class="recipe-content">
+    <div *ngFor="let time of Recipe.time; let i =index">
+        <span class="inline">
+            <h6>Prépation:</h6>
+            <p>{{time.cooking_time}} {{time.cooking_time_unit}}</p>
+        </span>
+        <span class="inline">
+        <h6>Cuisson:</h6>
+        <p>{{time.baking_time}} {{time.baking_time_unit}}</p>
+        </span>
+    </div>
+    </article>
+    <article class="button-play-go-content" >
+        <button (click)="goToRecipe(Recipe._id)" class="button-recipe">miam!</button>
+        <button (click) = "playRecipe()" class="button-recipe-nop">Nop!</button>
+        </article>
 </section>
+</section>
+
+<app-navigation></app-navigation>
 

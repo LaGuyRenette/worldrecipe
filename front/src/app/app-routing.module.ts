@@ -5,8 +5,6 @@ import { RecipeDetailComponent } from './public/recipe/recipe-detail/recipe-deta
 import { LoginComponent } from './public/account/login/login.component';
 import { CreateAccountComponent } from './public/account/create-account/create-account.component';
 import { HomeComponent } from './public/home/home.component';
-import { RecipeNavComponent } from './public/recipe/recipe-nav/recipe-nav.component';
-import { AccountDashboardComponent } from './public/account/account-dashboard/account-dashboard.component';
 import { AuthGuard } from './guards/auth.guard';
 
 
@@ -16,7 +14,6 @@ const routes: Routes = [
   { path: 'recipe/:id', component: RecipeDetailComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: CreateAccountComponent },
-  { path: 'myaccount', component: AccountDashboardComponent},
   { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate:[AuthGuard] }
 
 

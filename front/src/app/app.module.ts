@@ -10,12 +10,12 @@ import { LoginComponent } from './public/account/login/login.component';
 import { CreateAccountComponent } from './public/account/create-account/create-account.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { HomeComponent } from './public/home/home.component';
-import { RecipeNavComponent } from './public/recipe/recipe-nav/recipe-nav.component';
 import { HttpRequestInterceptor } from './interceptors/http-request.interceptor';
 import { NavigationComponent } from './shared/navigation/navigation.component';
 import { AdminModule } from './admin/admin.module';
-import { AccountDashboardComponent } from './public/account/account-dashboard/account-dashboard.component';
 import { AuthService } from './service/auth/auth.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -28,9 +28,7 @@ import { AuthService } from './service/auth/auth.service';
     CreateAccountComponent,
     HeaderComponent,
     HomeComponent,
-    RecipeNavComponent,
     NavigationComponent,
-    AccountDashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,7 +36,9 @@ import { AuthService } from './service/auth/auth.service';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    AdminModule
+    AdminModule,
+    BrowserAnimationsModule,
+    MatIconModule,
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true}],
   bootstrap: [AppComponent]

@@ -1,0 +1,27 @@
+.recipe-content {
+    display: flex;
+    flex-direction: column;
+
+    .card-color-green {
+        padding:4rem;
+        background-color: #0D382E;
+        color: white;
+        border-radius: 5px;
+
+        h2, h4, p{
+            color:white
+        }
+    }
+
+    .card-color-blue {
+        padding:4rem;
+        background-color: #A3C5C9;
+        border-radius: 5px;
+    }
+
+    .card-color-yellow {
+        padding:4rem;
+        background-color: #D7A35B;
+        border-radius: 5px;
+    }
+}

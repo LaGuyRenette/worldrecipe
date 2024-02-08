@@ -1,10 +1,13 @@
-<h1>Bienvenue</h1>
+<h1>Connexion</h1>
+<section class="navigation"><app-navigation></app-navigation></section>
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <div>
+    <section class="login-form">
         <label for="email">Adresse mail</label>
         <input type="email" formControlName="email" required />
         <label for="password" >Mot de passe</label>
         <input type="password" formControlName="password" required />
-        <button type="submit" [disabled]="!loginForm.valid">OK!</button>
-    </div>
+        <article class="validation-login-button">
+            <button class="button-ok"type="submit" [disabled]="!loginForm.valid">OK!</button>
+        </article>
+    </section>
 </form>

@@ -12,7 +12,7 @@ export class AuthGuard {
   private router: Router
  ){}
  canActivate():Observable<boolean> {
-  return this.authService.me().pipe(
+  return this.authService.handleMe().pipe(
     switchMap(message => {
       if (message) {
         console.log("guard")

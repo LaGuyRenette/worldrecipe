@@ -13,8 +13,8 @@ export class CreateRecipeComponent {
   categoryOption = [
     {value: 'Viande'},
     {value: 'Épice'},
-    {value: 'Légume'},
-    {value: 'Fruit'},
+    {value: 'Fruit & Légume'},
+    {value: 'Produit issu d\'animaux'},
     {value: 'Fruit à coque'},
     {value: 'Laitage'},
     {value: 'Poisson'},

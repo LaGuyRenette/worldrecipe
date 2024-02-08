@@ -20,6 +20,7 @@ const AdminMiddleware = async(req, res, next) =>{
             console.log("user found:", user)
             if(user && user.role === 'admin'){
                 console.log("user is admin")
+                req.user = user;
                 next();
             }else{
                 console.log("user is user")

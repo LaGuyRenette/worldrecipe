@@ -25,7 +25,7 @@ RecipeRoute.route('/random-recipe').get(getRandomRecipe)
 RecipeRoute.route("/add-recipe").post( AdminMiddleware, createRecipe )
 
 //UPDATE
-RecipeRoute.route("/update-recipe/:id").put( updateRecipe)
+RecipeRoute.route("/update-recipe/:id").put(AdminMiddleware, updateRecipe)
 
 //DELETE
 RecipeRoute.route("/delete-recipe/:id").delete(AdminMiddleware, deleteRecipe)

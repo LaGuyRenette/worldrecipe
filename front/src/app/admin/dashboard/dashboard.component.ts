@@ -37,4 +37,8 @@ export class DashboardComponent {
       this.router.navigate([`/update-user/${_id}`]);
     })
   }
+  getCardColorClass(index: number): string {
+    const colors = ["card-color-green", "card-color-blue", "card-color-yellow"];
+    return colors[index % colors.length];
+  }
 }

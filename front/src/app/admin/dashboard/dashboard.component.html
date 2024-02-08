@@ -1,15 +1,19 @@
 <h2>Dashboard</h2>
-
-<h3>Recettes </h3>
-    <div *ngFor="let recipe of Recipes; let i =index">
-        <h2>{{recipe.name}}</h2>
-        <h4>{{recipe.country}}</h4>
-        <button (click)="goToUpdateRecipe(recipe._id)">voir</button>
+<section class="nav-dashboard">
+    <mat-icon aria-hidden="true" aria-label="voir d'autres recettes" fontIcon="ramen_dining"
+        routerLink="/recipes"></mat-icon>
+    <button routerLinkActive="active" routerLink="/create-recipe" class="button-nav-recipe-create">créer
+        recette</button>
+</section>
+<h2>Recettes </h2>
+<section class="recipe-content">
+    <div class="recipe-detail" *ngFor="let recipe of Recipes; let i =index" [ngClass]="getCardColorClass(i)">
+        <h5>{{recipe.name}} - {{recipe.country}}</h5>
+        <mat-icon aria-hidden="true" aria-label="modifier la recette" fontIcon="visibility"
+            (click)="goToUpdateRecipe(recipe._id)" class="button-open-recipe"></mat-icon>
     </div>
+</section>
 <h3>Utilisateurs</h3>
-    <div *ngFor="let user of Users; let i =index">
-        <h2>{{user.email}}</h2>
-    </div>
-<p>et ici il y'a le nom de mes utilisateurs </p>
-
-
+<div *ngFor="let user of Users; let i =index">
+    <p>{{user.email}}</p>
+</div>

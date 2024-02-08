@@ -1,0 +1,110 @@
+.nav-dashboard{
+    margin-top: 5rem;
+    height:2rem;
+    padding-bottom: 1rem;
+    position: fixed;
+    top:0;
+    background-color: white;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    gap:1rem;
+
+    .button-nav-recipe-create{
+        color: #0D382E;
+        background-color: transparent;
+    }
+    .button-nav-dashboard{
+        color: #D7A35B;
+        background-color: transparent;
+    }
+}
+.formGroup{
+    display: flex;
+    flex-direction: column;
+    label{
+        margin-top:1rem;
+      
+    }
+    .prep-content{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    }
+    .cook-content{
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    input, select{
+        width: 100%;
+        padding: 0.5rem;
+        border: 1px solid #A3C5C9;
+        border-radius: 5px;
+        box-sizing: border-box;
+        margin-top: 0.5rem;
+    }
+    .button-add-delete{
+        display:flex;
+        justify-content: flex-end;
+        margin-top: 1rem;
+        gap:0.5rem;
+
+        .button-bonus{
+            background-color: #D7A35B;
+            color: #0D382E;
+            padding: 0.5rem;
+            margin-right: 0.5rem;
+            max-height: 1.5rem;
+            display: flex;
+            align-items: center
+        }
+        .button-minus{
+            background-color:#963903;
+            color: white;
+            padding: 0.5rem;
+            margin-right: 0.5rem;
+            max-height: 1.5rem;
+            display: flex;
+            align-items: center
+    
+        }
+    }
+    //MOBILE
+    @media screen and (min-width:600px){
+        padding: 2rem;
+        
+    }
+        //TABLETTE
+        @media screen and (min-width:768px){
+            padding: 4rem;
+            
+        }
+    
+        //COMPUTER
+        @media screen and (min-width:1024px){
+            padding: 6rem;
+            
+        }
+}
+.submit-register-button{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    .button-ok{
+        background-color: #0D382E;
+        display: inline-block;
+        color: #FFFFFF;
+        border-radius: 8px;
+        max-width: 50%;
+        padding: 0.5rem;
+    }
+    .button-delete{
+        background-color: #963903;
+        display: inline-block;
+        color: #FFFFFF;
+        border-radius: 8px;
+        max-width: 50%;
+        padding: 0.8rem;
+    }
+}

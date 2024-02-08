@@ -1,10 +1,14 @@
 <h1>Bienvenue</h1>
+<section class="navigation"><app-navigation></app-navigation></section>
+
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-    <div>
+    <section class="register-form">
         <label for="email">Adresse mail</label>
         <input type="email" formControlName="email" required />
         <label for="password">Mot de passe</label>
         <input type="password" formControlName="password" required />
-        <button type="submit" [disabled]="!registerForm.valid">OK!</button>
-    </div>
+        <article class="validation-register-button">
+            <button class="button-ok" type="submit" [disabled]="!registerForm.valid">OK!</button>
+        </article>
+    </section>
 </form>

@@ -1,5 +1,12 @@
-<button routerLinkActive="active" routerLink="/recipes" *ngIf="isLogged" >recettes</button>
-<button routerLinkActive="active" routerLink="/register" *ngIf="!isLogged">register</button>
-<button routerLinkActive="active" routerLink="/login" *ngIf="!isLogged">Login</button>
-<button routerLinkActive="active" routerLink="/myaccount" *ngIf="isLogged">Mon profil</button>
-<p (click)="logout()"*ngIf="isLogged">logout </p>
+<section class="navigation-shared-content">
+    <mat-icon aria-hidden="true" aria-label="icon pour se connecter ou s'enregistrer" fontIcon="account_circle"
+        (click)="showActionAccount()" *ngIf="!isLogged" class="logout"></mat-icon>
+    <button routerLinkActive="active" routerLink="/register" *ngIf="!isLogged && showActionActions"
+        class="inscription">Inscription</button>
+    <button routerLinkActive="active" routerLink="/login" *ngIf="!isLogged && showActionActions"
+        class="connexion">Connexion</button>
+    <mat-icon aria-hidden="true" aria-label="icon home pour aller a la page d'accueil" fontIcon="home" routerLink="/"
+        class="home"></mat-icon>
+    <mat-icon aria-hidden="true" aria-label="icon pour se deconnecter" fontIcon="exit_to_app" (click)="logout()"
+        *ngIf="isLogged" class="logout"></mat-icon>
+</section>

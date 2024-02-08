@@ -1,3 +1,10 @@
+<section class="nav-dashboard">
+    <mat-icon aria-hidden="true" aria-label="voir d'autres recettes" fontIcon="ramen_dining"
+        routerLink="/recipes"></mat-icon>
+    <button routerLinkActive="active" routerLink="/create-recipe" class="button-nav-recipe-create">créer
+        recette</button>
+    <button routerLinkActive="active" routerLink="/dashboard" class="button-nav-dashboard">Dashboard</button>
+</section>
 <h2>Modifier la recette</h2>
 
 <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
@@ -9,16 +16,20 @@
             <div formArrayName="time">
                 <div *ngFor="let time of timeFormArray.controls; let i = index">
                     <div [formGroupName]="i">
+                        <article class="prep-content">
                         <label>Temps de Préparation</label>
                         <input type="number" formControlName="cooking_time" required />
                         <select formControlName="cooking_time_unit" required>
                             <option *ngFor="let unit of cooking_time_unit" [value]="unit.value">{{ unit.label }}</option>
                         </select>
+                    </article>
+                    <article class="cook-content">
                         <label>Temps de Cuisson</label>
                         <input type="number" formControlName="baking_time" required />
                         <select formControlName="baking_time_unit" required>
                             <option *ngFor="let unit of baking_time_unit" [value]="unit.value">{{ unit.label }}</option>
                         </select>
+                    </article>
                     </div>
                 </div>
             </div>
@@ -36,10 +47,13 @@
                         <select formControlName="unit" required>
                             <option *ngFor="let unit of unitOptions" [value]="unit.value">{{ unit.label }}</option>
                         </select>
-                        <button type="button" (click) ="deleteIngredient(i)">-</button>
+                        <section class="button-add-delete">
+                            <button type="button" (click)="addIngredient()" class="button-bonus">+</button>
+                            <button type="button" (click) ="deleteIngredient(i)" class="button-minus">-</button>
+                        </section>
                     </div>
                 </div>
-                <button type="button" (click)="addIngredient()">+</button>
+
             </div>
     </section>
     <section class="FormGroup">
@@ -50,10 +64,14 @@
                     <select formControlName="value" required>
                         <option *ngFor="let diet of dietOptions" [value]="diet.value">{{ diet.value }}</option>
                     </select>
-                    <button type="button" (click) ="deleteDiet(i)">-</button>
+                    <section class="button-add-delete">
+                        <button type="button" (click)="addDiet()" class="button-bonus">+</button>
+                        <button type="button" (click) ="deleteDiet(i)" class="button-minus">-</button>
+                    </section>
+ 
                 </div>
             </div>
-            <button type="button" (click)="addDiet()">+</button>
+
         </div>
     </section>
     <section class="FormGroup">
@@ -62,13 +80,17 @@
                 <div *ngFor="let step of stepsFormArray.controls; let i = index">
                     <div [formGroupName]="i">
                         <input type="text" formControlName="name" required/>
-                        <button type="button" (click) ="deleteStep(i)">-</button>
+                        <section class="button-add-delete">
+                            <button type="button" (click)="addStep()" class="button-bonus">+</button>
+                            <button type="button" (click) ="deleteStep(i)" class="button-minus">-</button>
+                        </section>
                     </div>
                 </div>
-                <button type="button" (click)="addStep()">+</button>
-            </div>
-        <button type="submit">OK!</button>
-        <button (click)="delete()">Supprimer</button>
+
+            </div> <article class="submit-register-button">
+                <button class="button-ok" type="submit">OK!</button>
+                <button class="button-delete" (click)="delete()">Supprimer</button>
+               </article>
     </section>
     </div>
 </form>

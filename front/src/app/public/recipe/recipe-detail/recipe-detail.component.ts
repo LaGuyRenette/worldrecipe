@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CrudRecipeService } from 'src/app/service/recipe/crud-recipe.service';
 
@@ -8,7 +8,11 @@ import { CrudRecipeService } from 'src/app/service/recipe/crud-recipe.service';
   styleUrls: ['./recipe-detail.component.scss']
 })
 export class RecipeDetailComponent {
-  Recipe: any;
+  Recipe: any = { diets:[] , ingredients: [], steps: [] };
+
+  @ViewChild('overviewSection') overviewSection: ElementRef | undefined;
+  @ViewChild('ingredientSection') ingredientSection: ElementRef | undefined;
+  @ViewChild('stepSection') stepSection: ElementRef | undefined;
 
 constructor(
   private crudService: CrudRecipeService,
@@ -23,5 +27,19 @@ constructor(
       });
   });
 }
+
+goToOverview(){
+  this.overviewSection?.nativeElement.scrollIntoView({behavior: 'smooth'})
+  console.log("oveview")
+}
+goToIngredient(){
+  this.ingredientSection?.nativeElement.scrollIntoView({behavior: 'smooth'})
+  console.log('ingredient')
+}
+goToStep(){
+  this.stepSection?.nativeElement.scrollIntoView({behavior: 'smooth'})
+  console.log("step")
+}
+
 }
 

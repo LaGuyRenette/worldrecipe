@@ -9,7 +9,7 @@ import { CrudRecipeService } from 'src/app/service/recipe/crud-recipe.service';
 })
 export class RecipeListComponent {
 Recipes: any = [];
-getId: any;
+
 
 constructor(
   private crudService: CrudRecipeService,
@@ -31,5 +31,9 @@ goToRecipe(_id: string) {
   this.crudService.GetRecipe(_id).subscribe((res: any) => {
     this.router.navigate([`recipe/${_id}`]); 
 })
+}
+getCardColorClass(index: number): string {
+  const colors = ["card-color-green", "card-color-blue", "card-color-yellow"];
+  return colors[index % colors.length];
 }
 }

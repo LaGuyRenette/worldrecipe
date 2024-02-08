@@ -1,20 +1,21 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, map, tap } from 'rxjs';
 import { environment } from 'src/environment/environment.developement';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-  
+    //HTTP HEADERS
+    HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
   isLoggedEmitter : EventEmitter<boolean> = new EventEmitter();
-
+ 
 
   constructor(
     private http: HttpClient) {
+      
       this.handleLoginStatus();
      }
 
@@ -28,26 +29,30 @@ export class AuthService {
       return this.http.post(`${environment.API}login`, credentials);
     }
 
-
     logout():Observable<any>{
       console.log("logout front auth service")
       return this.http.get(`${environment.API}logout`);
     }
 
-    me(): Observable<any> {
+    handleMe(): Observable<any> {
       return this.http.get<boolean>(`${environment.API}me`)
         .pipe(
           tap(res => this.isLoggedEmitter.emit(res))
         );
-        
     }
-    
+
+    isAdmin(){
+      
+    }
+
     handleLoginStatus(){
-      this.me().subscribe({
+      this.handleMe().subscribe({
         next: (res)=> {
+          console.log("resultat de handleMe:", res)
           this.isLoggedEmitter.emit(res)
         },
         error: (error) => {
+          console.error("erreur lié a handleLogin,Me:" , error)
           this.isLoggedEmitter.emit(false)
         }
     })

@@ -1,0 +1,50 @@
+.navigation{
+    display:flex;
+    flex-direction: row-reverse;
+    margin-right: 2rem;
+    margin-bottom: -0.5rem;
+}
+.register-form{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color:#D7A35B ;
+    border-radius: 1rem;
+
+    //MOBILE
+    @media screen and (min-width:320px){
+        padding: 2rem;
+        
+    }
+        //TABLETTE
+        @media screen and (min-width:768px){
+            padding: 4rem;
+            
+        }
+    
+        //COMPUTER
+        @media screen and (min-width:1024px){
+            padding: 6rem;
+            
+        }
+    
+    input{
+        display:flex;
+        height:3rem;
+        border-radius: 8px;
+        margin: 1.75rem 0;
+    }
+    .validation-register-button{
+        display:flex;
+        justify-content: center;
+
+    .button-ok{
+        background-color: #963903;
+        color:white;
+        border-radius: 8px;
+        padding: 14px 24px 16px;
+        margin-top: 2rem;
+    }
+    }
+
+}

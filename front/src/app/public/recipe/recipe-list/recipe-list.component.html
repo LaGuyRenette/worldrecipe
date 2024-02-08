@@ -1,11 +1,10 @@
-
-<div *ngFor="let recipe of Recipes; let i =index">
+<section class="recipe-content">
+<div *ngFor="let recipe of Recipes; let i =index" [ngClass]="getCardColorClass(i)">
     <h2>{{recipe.name}}</h2>
     <h4>{{recipe.country}}</h4>
     <div *ngFor="let time of recipe.time; let i =index">
-        <p>{{time.cooking_time}}</p>
-        <p>{{time.cooking_time_unit}}</p>
-        <p>{{time.baking_time}}</p>
+        <h5>Temps de Prépation : {{time.cooking_time}} {{time.cooking_time_unit}}</h5>
+        <h5>Temps de Cuisson: {{time.baking_time}} {{time.baking_time_unit}}</h5>
     </div>
 
     <p>{{recipe.diet}}</p>
@@ -15,18 +14,10 @@
     <section class="ingredients section">
         <h4>Ingredients</h4>
         <div  *ngFor="let ingredient of recipe.ingredients; let i = index">
+                <h5>{{ingredient.category}}</h5>
                 <p>{{ingredient.name}}</p>
-                <p>{{ingredient.category}}</p>
-                <p>{{ingredient.quantity}}</p>
-                <p>{{ingredient.unit}}</p>
-        </div>
-    </section>
-    <section class="steps section">
-        <h4>Étapes</h4>
-        <div *ngFor="let step of recipe.steps; let i= index">
-            <p>{{step.name}}</p>
         </div>
     </section>
     <button (click)="goToRecipe(recipe._id)">voir</button>
-    <button (click)="delete(recipe._id, recipe.i )">Supprimer</button>
 </div>
+</section>

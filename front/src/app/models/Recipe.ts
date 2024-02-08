@@ -10,7 +10,7 @@ export class Recipe{
     steps!: [{
         name: String
     }];
-    diet!: [{
+    diets!: [{
         value: String
     }];
     cooking_time!: Number;
