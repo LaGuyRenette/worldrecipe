@@ -9,11 +9,18 @@ import { AuthService } from '../service/auth/auth.service';
 export class AdminGuard{
 
   constructor(
-    private authServie : AuthService,
+    private authService : AuthService,
     private router : Router
   ){
-
   }
-
-  
+  canActivate(): boolean {
+    if(this.authService.isAdmin()){
+      console.log('is admin')
+      return true
+    }else{
+      this.router.navigate(['/']);
+      console.log('is user')
+      return false;
+    }
+  }
 }

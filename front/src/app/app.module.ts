@@ -6,8 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RecipeDetailComponent } from './public/recipe/recipe-detail/recipe-detail.component';
 import { RecipeListComponent } from './public/recipe/recipe-list/recipe-list.component';
-import { LoginComponent } from './public/account/login/login.component';
-import { CreateAccountComponent } from './public/account/create-account/create-account.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { HomeComponent } from './public/home/home.component';
 import { HttpRequestInterceptor } from './interceptors/http-request.interceptor';
@@ -16,6 +14,7 @@ import { AdminModule } from './admin/admin.module';
 import { AuthService } from './service/auth/auth.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+import { CookieService } from 'ngx-cookie-service';
 
 
 
@@ -24,8 +23,6 @@ import { MatIconModule } from '@angular/material/icon';
     AppComponent,
     RecipeDetailComponent,
     RecipeListComponent,
-    LoginComponent,
-    CreateAccountComponent,
     HeaderComponent,
     HomeComponent,
     NavigationComponent,
@@ -40,7 +37,10 @@ import { MatIconModule } from '@angular/material/icon';
     BrowserAnimationsModule,
     MatIconModule,
   ],
-  providers: [{ provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true}],
+  providers: [
+    CookieService,
+    { 
+    provide: HTTP_INTERCEPTORS, useClass: HttpRequestInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule implements OnInit {

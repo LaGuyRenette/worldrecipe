@@ -81,10 +81,12 @@ dotenv.config();
   
               if (match) {
                 console.log("send token in cookie")
+                const cookieOptions =  { httpOnly: true, sameSite: 'lax' }
                 const payload = { userID: user.id };
                 const options = { expiresIn: '2h' };
                 const token = jwt.sign(payload, process.env.SERVER_SECRET, options);
-                res.cookie('access', token, { httpOnly: true, sameSite: 'lax' });
+                res.cookie('access', token, cookieOptions);
+                res.cookie('role', user.role, cookieOptions)
                 res.json({ message: 'login successful' });
               } else {
                 console.log("authcontroller failure")

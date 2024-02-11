@@ -8,6 +8,7 @@ import { CreateRecipeComponent } from './crud/recipe/create-recipe/create-recipe
 import { UpdateRecipeComponent } from './crud/recipe/update-recipe/update-recipe.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UpdateUserComponent } from './crud/user/update-user/update-user.component';
+import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,9 @@ import { UpdateUserComponent } from './crud/user/update-user/update-user.compone
     AdminRoutingModule,
     ReactiveFormsModule,
     MatIconModule,
+  ],
+  providers: [
+    CookieService
   ]
 })
 export class AdminModule { }

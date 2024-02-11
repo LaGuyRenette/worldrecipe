@@ -4,9 +4,10 @@ import { CreateRecipeComponent } from './crud/recipe/create-recipe/create-recipe
 import { UpdateRecipeComponent } from './crud/recipe/update-recipe/update-recipe.component';
 import { UpdateUserComponent } from './crud/user/update-user/update-user.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { AdminGuard } from '../guards/admin.guard';
 
 const routes: Routes = [
-  { path: 'create-recipe', component: CreateRecipeComponent},
+  { path: 'create-recipe', component: CreateRecipeComponent, canActivate: [AdminGuard]},
   { path: 'update-recipe/:id', component: UpdateRecipeComponent },
   { path: 'update-user', component: UpdateUserComponent },
   { path :'dashboard', component: DashboardComponent }

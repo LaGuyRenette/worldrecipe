@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { User } from 'src/app/models/User';
 import { AuthService } from 'src/app/service/auth/auth.service';
 
 @Component({
-  selector: 'app-create-account',
-  templateUrl: './create-account.component.html',
-  styleUrls: ['./create-account.component.scss']
+  selector: 'app-register',
+  standalone: true,
+  imports: [ReactiveFormsModule],
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.scss'
 })
-export class CreateAccountComponent {
+export class RegisterComponent { 
   registerForm: FormGroup;
 
   constructor(
@@ -44,4 +45,3 @@ onSubmit(){
   }
 }
 }
-
