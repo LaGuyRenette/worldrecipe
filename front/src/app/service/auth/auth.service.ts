@@ -19,7 +19,6 @@ export class AuthService {
     private cookieService: CookieService,
     ) {
      this.handleLoginStatus();
-     console.log(this.isAdmin)
      }
 
     register(credentials: FormGroup): Observable<any>{
@@ -44,29 +43,9 @@ export class AuthService {
         );
     }
 
-    isAdmin(){
-      // const cookies = document.cookie.split(';');
-      // console.log('liste des cookies', cookies)
-      // for (let i = 0; i < cookies.length; i ++){
-      //   const cookieRole = cookies[i].trim();
-      //   console.log("cookie en cours de traitement:", cookieRole)
-      //   if(cookieRole.startsWith('role')){
-      //     const roleValue =  cookieRole.substring('role='.length);
-      //     console.log("valeur du role:", roleValue);
-      //     const isAdmin = roleValue ==='admin';
-      //     console.log("admin?:", isAdmin);
-
-      //     return isAdmin;
-      //   }
-
-      //   }
-      //   console.log("aucun cookie avec le nom role trouvé ou bien il n'est pas admin")
-      //   return false;
-      const cookies = this.cookieService.getAll();
-      console.log(cookies)
-      const roleValue = this.cookieService.get('role');
-      console.log(roleValue)
-      return roleValue === 'admin'   
+    isAdmin():Observable<any>{
+      console.log('inside Authservice is admin')
+      return this.http.get(`${environment.API}admin`);
     }
   
 

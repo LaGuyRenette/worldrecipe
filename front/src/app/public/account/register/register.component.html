@@ -1,13 +1,14 @@
-<h1>Bienvenue</h1>
 
+<h1>Bienvenue</h1>
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
     <section class="register-form">
         <label for="email">Adresse mail</label>
         <input type="email" formControlName="email" required />
         <label for="password">Mot de passe</label>
-        <input type="password" formControlName="password" required />
+        <input type="password" formControlName="password" required placeholder="Minimum 9 caractères" />
         <article class="validation-register-button">
-            <button class="button-ok" type="submit" [disabled]="!registerForm.valid">OK!</button>
+            <button class="button-ok" type="submit" [disabled]="!registerForm.valid" [style.backgroundColor]="registerForm.valid ?'#0D382E': '#963903'">OK!</button>
         </article>
+        <a routerLink="/login">connexion</a>
     </section>
 </form>

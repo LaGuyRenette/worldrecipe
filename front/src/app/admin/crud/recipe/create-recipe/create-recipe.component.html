@@ -1,96 +1,104 @@
-<section class="nav-dashboard">
-    <mat-icon aria-hidden="true" aria-label="voir d'autres recettes" fontIcon="ramen_dining"
-        routerLink="/recipes"></mat-icon>
-    <button routerLinkActive="active" routerLink="/dashboard" class="button-nav-dashboard">Dashboard</button>
-</section>
-<form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
-    <div class="formGroup">
-        <h3>Information</h3>
-        <label>Nom de la recette</label>
-        <input type="text" formControlName="name" required placeholder=" ramen, moussaka" />
-        <label>Pays</label>
-        <input type="text" formControlName="country" required placeholder=" Japon, Grèce" />
-        <div formArrayName="time">
-            <h3>Temps</h3>
-            <div *ngFor="let time of timeFormArray.controls; let i = index">
-                <div [formGroupName]="i">
-                    <article class="prep-content">
-                        <label>Temps de Préparation</label>
-                        <input type="number" formControlName="cooking_time" required placeholder=" 10" />
-                        <select formControlName="cooking_time_unit" required placeholder=" secondes, minutes etc">
-                            <option *ngFor="let unit of cooking_time_unit" [value]="unit.value">{{ unit.label }}
-                            </option>
-                        </select>
-                    </article>
-                    <article class="cook-content">
-                        <label>Temps de Cuisson</label>
-                        <input type="number" formControlName="baking_time" required placeholder=" 10" />
-                        <select formControlName="baking_time_unit" required>
-                            <option *ngFor="let unit of baking_time_unit" [value]="unit.value">{{ unit.label }}</option>
-                        </select>
-                    </article>
+<section class="create-recipe-container">
+
+    <h2>Créer une recette</h2>
+    <form [formGroup]="recipeForm" (ngSubmit)="onSubmit()" aria-label="Formulaire de création de recette">
+        <div class="formGroup">
+            <h3>Information</h3>
+            <label>Nom de la recette</label>
+            <input type="text" formControlName="name" required placeholder=" ramen, moussaka" />
+            <label>Pays</label>
+            <input type="text" formControlName="country" required placeholder=" Japon, Grèce" />
+            <div formArrayName="time">
+                <h3>Temps</h3>
+                <div *ngFor="let time of timeFormArray.controls; let i = index">
+                    <div [formGroupName]="i">
+                        <article class="prep-content">
+                            <label>Temps de Préparation</label>
+                            <input type="number" formControlName="cooking_time" required placeholder=" 10" />
+                            <select formControlName="cooking_time_unit" required placeholder=" secondes, minutes etc"
+                                aria-label="Unité de temps de préparation">
+                                <option *ngFor="let unit of cooking_time_unit" [value]="unit.value">{{ unit.label }}
+                                </option>
+                            </select>
+                        </article>
+                        <article class="cook-content">
+                            <label>Temps de Cuisson</label>
+                            <input type="number" formControlName="baking_time" required placeholder=" 10" />
+                            <select formControlName="baking_time_unit" required aria-label="unité de cuisson">
+                                <option *ngFor="let unit of baking_time_unit" [value]="unit.value">{{ unit.label }}
+                                </option>
+                            </select>
+                        </article>
+                    </div>
                 </div>
             </div>
+
+            <section class="FormGroup">
+                <h3>Ingredients</h3>
+                <div formArrayName="ingredients">
+                    <div *ngFor="let ingredient of ingredientsFormArray.controls, let i = index">
+                        <div [formGroupName]="i">
+                            <input type="number" formControlName="quantity" required placeholder=" 10" />
+                            <select formControlName="unit" required placeholder="kg" aria-label="unité de quantité">
+                                <option *ngFor="let unit of unitOptions" [value]="unit.value">{{ unit.label }}</option>
+                            </select>
+                            <input type="text" formControlName="name" required placeholder="kiwi" />
+                            <select formControlName="category" required placeholder=" fruit"
+                                aria-label="type d'aliment">
+                                <option *ngFor="let category of categoryOption" [value]="category.value">{{
+                                    category.value }}</option>
+                            </select>
+
+                            <section class="button-add-delete">
+                                <button type="button" (click)="deleteIngredient(i)" class="button-minus"
+                                    aria-label="supprimer l'ingredient">-</button>
+                                <button type="button" (click)="addIngredient()" class="button-bonus"
+                                    aria-label="ajouter l'ingredient">+</button>
+                            </section>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            <section class="FormGroup">
+                <H3>Régime Alimentaire</H3>
+                <div formArrayName="diets">
+                    <div *ngFor="let diet of dietFormArray.controls, let i = index">
+                        <div [formGroupName]="i">
+                            <select formControlName="value" required aria-label="regime alimentaire">
+                                <option *ngFor="let diet of dietOptions" [value]="diet.value">{{ diet.value }}</option>
+                            </select>
+                            <section class="button-add-delete">
+                                <button type="button" (click)="deleteDiet(i)" class="button-minus"
+                                    aria-label="supprimer le régime alimentaire">-</button>
+                                <button type="button" (click)="addDiet()" class="button-bonus"
+                                    aria-label="Ajouter le régime alimentaire">+</button>
+                            </section>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            <section class="FormGroup">
+                <h3>Étapes</h3>
+                <div formArrayName="steps">
+                    <div *ngFor="let step of stepsFormArray.controls; let i = index">
+                        <div [formGroupName]="i">
+                            <input type="text" formControlName="name" required
+                                placeholder=" couper le kiwi en tranche fine (0.5 cm)" />
+                            <section class="button-add-delete">
+                                <button type="button" (click)="deleteStep(i)" class="button-minus"
+                                    aria-label="supprimer l'étape">-</button>
+                                <button type="button" (click)="addStep()" class="button-bonus"
+                                    aria-label="Ajouter une étape">+</button>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                <article class="submit-register-button">
+                    <button class="button-ok" type="submit" aria-label="Validation du formulaire">OK!</button>
+                </article>
+            </section>
         </div>
-
-        <section class="FormGroup">
-            <h3>Ingredients</h3>
-            <div formArrayName="ingredients">
-                <div *ngFor="let ingredient of ingredientsFormArray.controls, let i = index">
-                    <div [formGroupName]="i">
-                        <input type="number" formControlName="quantity" required placeholder=" 10" />
-                        <select formControlName="unit" required placeholder="kg">
-                            <option *ngFor="let unit of unitOptions" [value]="unit.value">{{ unit.label }}</option>
-                        </select>
-                        <input type="text" formControlName="name" required placeholder="kiwi" />
-                        <select formControlName="category" required placeholder=" fruit">
-                            <option *ngFor="let category of categoryOption" [value]="category.value">{{ category.value
-                                }}</option>
-                        </select>
-
-                        <section class="button-add-delete">
-                        <button type="button" (click)="deleteIngredient(i)" class="button-minus">-</button>
-                        <button type="button" (click)="addIngredient()" class="button-bonus">+</button>
-                    </section>
-                    </div>
-                </div>
-                
-            </div>
-        </section>
-        <section class="FormGroup">
-            <H3>Régime Alimentaire</H3>
-            <div formArrayName="diets">
-                <div *ngFor="let diet of dietFormArray.controls, let i = index">
-                    <div [formGroupName]="i">
-                        <select formControlName="value" required>
-                            <option *ngFor="let diet of dietOptions" [value]="diet.value">{{ diet.value }}</option>
-                        </select>
-                        <section class="button-add-delete">
-                        <button type="button" (click)="deleteDiet(i)" class="button-minus">-</button>
-                        <button type="button" (click)="addDiet()" class="button-bonus">+</button>
-                    </section>
-                    </div>
-                </div>
- 
-            </div>
-        </section>
-        <section class="FormGroup">
-            <h3>Étapes</h3>
-            <div formArrayName="steps">
-                <div *ngFor="let step of stepsFormArray.controls; let i = index">
-                    <div [formGroupName]="i">
-                        <input type="text" formControlName="name" required
-                            placeholder=" couper le kiwi en tranche fine (0.5 cm)" />
-                        <section class="button-add-delete">
-                            <button type="button" (click)="deleteStep(i)" class="button-minus">-</button>
-                            <button type="button" (click)="addStep()" class="button-bonus">+</button>
-                        </section>
-                    </div>
-                </div>
-            </div>
-            <article class="submit-register-button">
-         <button class="button-ok" type="submit">OK!</button>
-        </article>
-        </section>
-    </div>
-</form>
+    </form>
+</section>

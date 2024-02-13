@@ -1,6 +1,7 @@
 import { Component, NgZone } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Diet, Ingredient, Step, Time } from 'src/app/models/Recipe';
 import { CrudRecipeService } from 'src/app/service/recipe/crud-recipe.service';
 
 @Component({
@@ -9,6 +10,10 @@ import { CrudRecipeService } from 'src/app/service/recipe/crud-recipe.service';
   styleUrls: ['./update-recipe.component.scss']
 })
 export class UpdateRecipeComponent {
+  ingredients: Ingredient[] = [];
+  steps: Step[] =[];
+  diet: Diet[] = [];
+  time: Time[] =[];
   Recipe: any;
   recipeId: any;
   recipeForm : FormGroup;
@@ -65,56 +70,64 @@ export class UpdateRecipeComponent {
     private crudService: CrudRecipeService,
     private route: ActivatedRoute
   ){
-
-    this.recipeForm = this. formBuilder.group({
-      
-      name: ['', Validators.required],
-      country: ['', Validators.required],
-      ingredients: this.formBuilder.array([
-        this.formBuilder.group({
-          name: ['', Validators.required],
-          category: ['', Validators.required],
-          quantity: ['', Validators.required],
-          unit: ['', Validators.required]
-        }),
-      ]),
-      steps: this.formBuilder.array([
-        this.formBuilder.group({
-          name: ['', Validators.required],
-        })
-      ]),
-      diets: this.formBuilder.array([
-        this.formBuilder.group({
-        value: ['', Validators.required],
-        }),
-      ]),
-      time:this.formBuilder.array([
-        this.formBuilder.group({
-          cooking_time: ['', Validators.required],
-          cooking_time_unit: ['', Validators.required],
-          baking_time: ['', Validators.required],
-          baking_time_unit:['', Validators.required],
-        })
-      ]),
-    });
+    this.recipeForm = this.initializeForm();
   }
   ngOnInit(){
-     //GET THE ID WITH URL PARAM
-  this.route.paramMap.subscribe(params => {
-    this.recipeId = params.get('id');
-      this.crudService.GetRecipe(this.recipeId).subscribe((data: any) => {
-        console.log('Processed data in component:', data);
-        this.Recipe = data.data;
-
-        if (this.Recipe && this.recipeForm) {
-         this.recipeForm.patchValue(this.Recipe)
-        }else{
-          console.log('recipeId is undefined')
-        }
+    this.route.paramMap.subscribe(params => {
+      this.recipeId = params.get('id');
+        this.crudService.GetRecipe(this.recipeId).subscribe((recipe: any) => {
+          console.log('Processed data in component:', recipe);
+            this.recipeForm = this.initializeForm(recipe.data)
+        });
       });
-    });
-  }
 
+  }
+  initializeForm(recipe:any = null):FormGroup{
+     const recipeForm = this. formBuilder.group({
+      name: ['', Validators.required],
+      country: ['', Validators.required],
+      ingredients: this.formBuilder.array([]),
+      steps: this.formBuilder.array([]),
+      diets: this.formBuilder.array([]),
+      time:this.formBuilder.array([]),
+    });
+    if (recipe) {
+      this.recipeForm.patchValue({
+        name: recipe.name,
+        country: recipe.country,
+      });
+      if (recipe.steps && Array.isArray(recipe.steps)) {
+    recipe.ingredients.forEach((ingredient: Ingredient )=> {
+      (this.recipeForm.get('ingredients') as FormArray).push( this.formBuilder.group({
+        name: [ ingredient.name, Validators.required],
+        category: [ingredient.category, Validators.required],
+        quantity: [ingredient.quantity, Validators.required],
+        unit: [ingredient.unit, Validators.required]
+  }))})
+      recipe.diets.forEach((diet: Diet) => {
+        (this.recipeForm.get('diets') as FormArray).push(this.formBuilder.group({
+          value:  [diet.value, Validators.required],}))
+        })
+
+        recipe.steps.forEach((step: Step)=> {
+          (this.recipeForm.get('steps') as FormArray).push(  this.formBuilder.group({
+            name: [step.name, Validators.required],
+          }))
+        })   
+        recipe.time.forEach((time: Time)=> {
+        (this.recipeForm.get('time') as FormArray).push(  this.formBuilder.group({
+          cooking_time: [time.cooking_time, Validators.required],
+          cooking_time_unit: [time.cooking_time_unit,Validators.required],
+          baking_time: [time.baking_time, Validators.required],
+          baking_time_unit: [time.baking_time_unit,Validators.required]
+        }))
+        })
+      }
+    
+      return this.recipeForm;
+    }
+    return recipeForm
+  }
   get dietFormArray(){
     return this.recipeForm.get('diets')as FormArray;
   }
@@ -130,6 +143,10 @@ export class UpdateRecipeComponent {
     return this.recipeForm.get('time') as FormArray;
   }
 
+  //USE TRACKBY 
+  trackByIngredient(index:number, item: any){
+    return item.id;
+  }
   //ADD NEW CONTROL TO FORM ARRAY
 
   addIngredient(){
@@ -193,4 +210,3 @@ export class UpdateRecipeComponent {
     }
   }
 }
-

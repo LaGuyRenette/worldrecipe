@@ -1,11 +1,10 @@
 import { Component } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from 'src/app/service/auth/auth.service';
+import { NavigationComponent } from 'src/app/shared/navigation/navigation.component';
 
 @Component({
   selector: 'app-account',
-  standalone: true,
-  imports: [RouterModule],
   templateUrl: './account.component.html',
   styleUrl: './account.component.scss'
 })
@@ -25,9 +24,6 @@ export class AccountComponent {
     this.authService.isLoggedEmitter.subscribe(res => this.isLogged = res);
   }
   
-  showActionAccount(){
-    this.showActionActions= !this.showActionActions
-  }
   
   logout(){
     this.authService.logout().subscribe();

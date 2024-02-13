@@ -26,11 +26,14 @@ export class NavigationComponent {
   showActionAccount(){
     this.showActionActions= !this.showActionActions
   }
-  
+
   logout(){
     this.authService.logout().subscribe();
     this.router.navigate(["/login"]);
     this.isLogged = false;
+  }
+  onBack(){
+    window.history.back();
   }
 
 }

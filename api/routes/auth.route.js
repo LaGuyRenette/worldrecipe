@@ -9,7 +9,7 @@ AuthRoute.post("/register", handleRegister);
 AuthRoute.post("/login", handleLogin);
 AuthRoute.get("/logout", TokenVerifyMiddleWare, handlelogout)
 AuthRoute.get("/me", TokenVerifyMiddleWare, handleMe)
-AuthRoute.post("/admin", TokenVerifyMiddleWare,AdminMiddleware, handleAdmin);
+AuthRoute.get("/admin", TokenVerifyMiddleWare,AdminMiddleware);
 
 
 export default AuthRoute;

@@ -1,13 +1,13 @@
 <h1>Connexion</h1>
-
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <section class="login-form">
-        <label for="email">Adresse mail</label>
-        <input type="email" formControlName="email" required />
-        <label for="password" >Mot de passe</label>
-        <input type="password" formControlName="password" required />
-        <article class="validation-login-button">
-            <button class="button-ok"type="submit" [disabled]="!loginForm.valid">OK!</button>
-        </article>
-    </section>
-</form>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <label for="email">Adresse mail</label>
+            <input type="email" formControlName="email" required />
+            <label for="password">Mot de passe</label>
+            <input type="password" formControlName="password" required />
+            <article class="validation-login-button">
+                <button class="button-ok" type="submit" [disabled]="!loginForm.valid"[style.backgroundColor]="loginForm.valid ?'#D7A35B': '#963903'">OK!</button>
+            </article>
+        </form>
+        <a routerLink="/register">Inscription</a>
+</section>

@@ -1,32 +1,16 @@
-.navigation-shared-content {
+.navigation{
     display: flex;
     justify-content: center;
-    gap: 1rem;
-
-    .recipe {
-        background-color: #A3C5C9;
-        color: rgb(0, 0, 0);
-        border-radius: 8px;
-        padding: 14px 24px 16px;
+    gap: 2rem;
+    a{
+        color:black;
+        padding-top:10px;
+        border-top: 4px solid transparent;
+        transition: border-top-color 0.3 ease ;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
     }
-
-    .connexion {
-        background-color:transparent;
-        color: #D7A35B;
-    }
-
-    .inscription {
-        background-color: transparent;
-        color: #0D382E;
-    }
-
-    .logout {
-        background-color: transparent;
-        color: #0D382E;
-    }
-
-    .home {
-        background-color: transparent; 
-        color: #963903;
+    a:hover, a:active{
+        border-top-color: #0D382E;
     }
 }

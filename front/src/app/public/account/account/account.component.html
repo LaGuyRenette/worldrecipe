@@ -1,11 +1,15 @@
-<section class="navigation">
-    <article class="login">
-        <h5 routerLink="/login">Connexion</h5>
+<h2>
+    Le guide culinaire des voyageurs feignants fauchés
+</h2>
+
+<section class="navigation-account">
+    <article class="login-article">
+        <button class="login"routerLink="/login" *ngIf="!isLogged">Connexion</button>
     </article>
-    <article class="register">
-        <h5 routerLink="/register">Inscription</h5>
+    <article class="register-article">
+        <button class="register"routerLink="/register"*ngIf="!isLogged">Inscription</button>
     </article>
-    <article class="logout">
-        <h5>deconnexion</h5>
+    <article class="logout-article">
+        <button class="logout" (click)="logout()"*ngIf="isLogged">deconnexion</button>
     </article>
 </section>

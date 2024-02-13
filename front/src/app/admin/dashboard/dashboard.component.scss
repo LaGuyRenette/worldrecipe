@@ -1,39 +1,21 @@
-.nav-dashboard{
-    margin-top: 5rem;
-    height:2rem;
-    padding-bottom: 1rem;
-    position: fixed;
-    top:0;
-    background-color: white;
-    width:100%;
-    display: flex;
-    justify-content: center;
-    gap:1rem;
 
-    .button-nav-recipe-create{
-        color:  #A3C5C9;
-        background-color: transparent;
-    }
-    .button-nav-update-user{
-
-        color: #A3C5C9;
-        background-color: transparent;
-
-
-    }
-    .button-nav-dashboard{
-        color: #D7A35B;
-        background-color: transparent;
-    }
+.dashboard{
+padding:2rem;
 }
 .recipe-content {
     display: flex;
     flex-direction: column;
 
+    button{
+        background-color:#D7A35B ;
+        color:#0D382E
+    }
     .recipe-detail{
         display: flex;
         justify-content: space-between;
         align-items: center;
+        gap:5rem;
+        min-width:auto;
     }
 
     .card-color-green {
@@ -58,4 +40,26 @@
         background-color: #D7A35B;
         border-radius: 5px;
     }
+    .update-recipe-button{
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+}
+.button-add-recipe{
+    display: flex;
+    justify-content: center;
+    margin:1rem;
+    button{
+        background-color: #A3C5C9;
+    }
+}
+button{
+    border-radius: 25px;
+    font-family: Rubik;
+    font-size: 17px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 8px 15px;
+    border: 0; 
 }

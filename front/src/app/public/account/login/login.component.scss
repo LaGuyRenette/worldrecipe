@@ -1,12 +1,20 @@
 
 .login-form {
-    min-height: 100vh;
+    min-height: 50%;
     display: flex;
     flex-direction: column;
     background-color: #0D382E;
     border-radius: 1rem;
     padding: 5rem;
-
+    a{
+        font-family: Rubik;
+        font-size: 16px;
+        text-transform:lowercase;
+        font-weight: 700;
+        text-decoration:underline;
+        color: white;
+        margin-top: 1rem;
+    }
     label {
         color: white
     }
@@ -14,6 +22,7 @@
     input {
         display: flex;
         height: 3rem;
+        width: 100%;
         border-radius: 8px;
         margin: 1.75rem 0;
     }

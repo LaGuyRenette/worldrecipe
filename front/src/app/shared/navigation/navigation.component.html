@@ -1,15 +1,17 @@
-
 <section class="navigation">
+    <article class="back">
+        <mat-icon (click)="onBack()">arrow_back_ios</mat-icon>
+    </article>
     <article class="home">
-        <h5 routerLink="/">Accueil</h5>
+        <a routerLink="/">Accueil</a>
     </article>
     <article class="dashboard">
-        <h5 routerLink="/dashboard">Dashboard</h5>
+        <a routerLink="/dashboard">Dashboard</a>
     </article>
     <article class="recipes">
-        <h5 routerLink="/recipes">Recettes</h5>
+        <a routerLink="/recipes">Recettes</a>
     </article>
     <article class="account">
-        <h5 routerLink="/account">Compte</h5>
+        <a routerLink="/account">Compte</a>
     </article>
 </section>

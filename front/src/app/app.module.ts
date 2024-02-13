@@ -15,6 +15,9 @@ import { AuthService } from './service/auth/auth.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { CookieService } from 'ngx-cookie-service';
+import { AccountComponent } from './public/account/account/account.component';
+import { LoginComponent } from './public/account/login/login.component';
+import { RegisterComponent } from './public/account/register/register.component';
 
 
 
@@ -25,7 +28,11 @@ import { CookieService } from 'ngx-cookie-service';
     RecipeListComponent,
     HeaderComponent,
     HomeComponent,
-    NavigationComponent,
+    AccountComponent,
+    LoginComponent,
+    RegisterComponent,
+    NavigationComponent
+
   ],
   imports: [
     BrowserModule,

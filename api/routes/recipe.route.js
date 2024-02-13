@@ -22,10 +22,10 @@ RecipeRoute.route('/random-recipe').get(getRandomRecipe)
 
 //ADMIN ROUTE
 //CREATE
-RecipeRoute.route("/add-recipe").post( AdminMiddleware, createRecipe )
+RecipeRoute.route("/add-recipe").post( createRecipe )
 
 //UPDATE
-RecipeRoute.route("/update-recipe/:id").put(AdminMiddleware, updateRecipe)
+RecipeRoute.route("/update-recipe/:id").put(updateRecipe)
 
 //DELETE
 RecipeRoute.route("/delete-recipe/:id").delete(AdminMiddleware, deleteRecipe)

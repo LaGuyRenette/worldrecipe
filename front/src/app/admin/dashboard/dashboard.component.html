@@ -1,19 +1,21 @@
+<section class="dashboard">
 <h2>Dashboard</h2>
-<section class="nav-dashboard">
-    <mat-icon aria-hidden="true" aria-label="voir d'autres recettes" fontIcon="ramen_dining"
-        routerLink="/recipes"></mat-icon>
-    <button routerLinkActive="active" routerLink="/create-recipe" class="button-nav-recipe-create">créer
-        recette</button>
-</section>
-<h2>Recettes </h2>
-<section class="recipe-content">
+<h3>Recettes </h3>
+<article class="recipe-content">
     <div class="recipe-detail" *ngFor="let recipe of Recipes; let i =index" [ngClass]="getCardColorClass(i)">
         <h5>{{recipe.name}} - {{recipe.country}}</h5>
-        <mat-icon aria-hidden="true" aria-label="modifier la recette" fontIcon="visibility"
-            (click)="goToUpdateRecipe(recipe._id)" class="button-open-recipe"></mat-icon>
+        <button aria-label="modifier la recette" class="update-recipe-button" (click)="goToUpdateRecipe(recipe._id)" >
+        <mat-icon  aria-label="modifier la recette" fontIcon="visibility"
+            class="button-open-recipe"></mat-icon>modifier
+        </button>
     </div>
-</section>
+</article>
+<article class="button-add-recipe">
+<button aria-label="ajouter une recette"routerLinkActive="active" routerLink="/create-recipe" class="button-nav-recipe-create">+
+    recette</button>
+</article>
 <h3>Utilisateurs</h3>
 <div *ngFor="let user of Users; let i =index">
     <p>{{user.email}}</p>
 </div>
+</section>

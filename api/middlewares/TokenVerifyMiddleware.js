@@ -6,7 +6,6 @@ dotenv.config();
 
 const TokenVerifyMiddleWare = async (req,res,next) => {
     console.log("Inside TokenVerifyMiddleWare");
-    console.log("Request headers:", req.headers);
 
     if(req.cookies.access){
         try{

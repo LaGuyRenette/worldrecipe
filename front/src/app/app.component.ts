@@ -15,5 +15,5 @@ export class AppComponent {
     ){
       this.authService.isLoggedEmitter.subscribe(res => this.isLogged = res);
     }
-  
+
 }

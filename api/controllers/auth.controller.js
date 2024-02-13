@@ -41,13 +41,13 @@ dotenv.config();
       //ADMIN => verify connexion & role admin
       export const handleAdmin = async(req , res) =>{
         try{
-          req.method ==='GET' && req.path ==='/admin'
-          const token = req.cookies.access;
-          
+          if(!req.user || req.user.role !== 'admin'){
+            res.status(403).json({messge: 'acces forbidden'})
+          }
+          console.log("user is admin yeah")
           res.json({message: true});
-
-
         }catch(error){
+          console.log("ohoh we're in trouble")
           res.status(500).json({ error : error.message})
         }
       };
@@ -82,11 +82,10 @@ dotenv.config();
               if (match) {
                 console.log("send token in cookie")
                 const cookieOptions =  { httpOnly: true, sameSite: 'lax' }
-                const payload = { userID: user.id };
+                const payload = { userID: user.id , userRole: user.role};
                 const options = { expiresIn: '2h' };
                 const token = jwt.sign(payload, process.env.SERVER_SECRET, options);
                 res.cookie('access', token, cookieOptions);
-                res.cookie('role', user.role, cookieOptions)
                 res.json({ message: 'login successful' });
               } else {
                 console.log("authcontroller failure")

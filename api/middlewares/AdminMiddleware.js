@@ -18,13 +18,13 @@ const AdminMiddleware = async(req, res, next) =>{
 
         if(user){
             console.log("user found:", user)
-            if(user && user.role === 'admin'){
+            if(user.role === 'admin'){
                 console.log("user is admin")
-                req.user = user;
+                res.status(200).json({message: true});
                 next();
             }else{
                 console.log("user is user")
-                res.status(400).json({message: 'access forbidden'})
+                res.status(400).json({message: false})
             }
         }else {
             throw new Error("error :user not found")

@@ -1,13 +1,9 @@
-<section class="nav-dashboard">
-    <mat-icon aria-hidden="true" aria-label="voir d'autres recettes" fontIcon="ramen_dining"
-        routerLink="/recipes"></mat-icon>
-    <button routerLinkActive="active" routerLink="/create-recipe" class="button-nav-recipe-create">créer
-        recette</button>
-    <button routerLinkActive="active" routerLink="/dashboard" class="button-nav-dashboard">Dashboard</button>
-</section>
+
+<section class="update-recipe-container">
+
 <h2>Modifier la recette</h2>
 
-<form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+<form  [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
     <div class ="formGroup">
         <label>Nom de la recette</label>
             <input type="text" formControlName="name" required/>
@@ -37,8 +33,7 @@
     <section class="FormGroup">
         <h3>Ingredients</h3>
             <div formArrayName="ingredients">
-                <div *ngFor="let ingredient of ingredientsFormArray.controls, let i = index">
-                    <div [formGroupName]="i">
+                <div *ngFor="let ingredient of ingredientsFormArray.controls; let i = index ; trackBy : trackByIngredient" [formGroupName]="i">
                         <input type="text" formControlName="name" required/>
                         <input type ="number" formControlName="quantity" required/>
                         <select formControlName="category" required>
@@ -53,8 +48,6 @@
                         </section>
                     </div>
                 </div>
-
-            </div>
     </section>
     <section class="FormGroup">
         <H3>Régime Alimentaire</H3>
@@ -94,3 +87,5 @@
     </section>
     </div>
 </form>
+
+</section>

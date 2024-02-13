@@ -1,0 +1,41 @@
+h2 {
+    justify-content: center;
+    margin: 2rem;
+    text-align: center;
+    display: flex;
+    margin-bottom: 5rem;
+}
+.navigation-account{
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+
+
+@media(max-width: 768px){
+    flex-direction: column;
+    align-items: center;
+}
+
+    button{
+        border-radius: 25px;
+        font-family: Rubik;
+        font-size: 17px;
+        text-transform: uppercase;
+        font-weight: 700;
+        padding: 0.8rem 1.5rem;
+        border: 0;
+    }
+
+    .register{
+        background-color:#D7A35B ;
+        color:#0D382E
+    }
+    .login{
+        background-color:#0D382E ;
+        color:#D7A35B
+    }
+    .logout{
+        background-color:#963903;
+        color: white;
+    }
+}

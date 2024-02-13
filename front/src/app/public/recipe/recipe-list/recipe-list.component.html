@@ -1,4 +1,5 @@
 <section class="recipe-content">
+    <h2>Liste de recettes</h2>
 <div *ngFor="let recipe of Recipes; let i =index" [ngClass]="getCardColorClass(i)">
     <h2>{{recipe.name}}</h2>
     <h4>{{recipe.country}}</h4>
@@ -12,9 +13,7 @@
         <p>{{diet.value}}</p>
     </div>
     <section class="ingredients section">
-        <h4>Ingredients</h4>
         <div  *ngFor="let ingredient of recipe.ingredients; let i = index">
-                <h5>{{ingredient.category}}</h5>
                 <p>{{ingredient.name}}</p>
         </div>
     </section>
