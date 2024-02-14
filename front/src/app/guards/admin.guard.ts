@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable, map } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 import { AuthService } from '../service/auth/auth.service';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class AdminGuard{
     private router : Router
   ){
   }
-  canActivate():Observable<any> {
+  canActivate():Observable<boolean| UrlTree> {
    return this.authService.isAdmin().pipe(
     map(isAdmin => {
       if(isAdmin){
@@ -21,9 +21,11 @@ export class AdminGuard{
         return true;
       }else{
         console.log('is User')
-        return this.router.navigate(['/'])
+        return this.router.createUrlTree(['/'])
       }
-    })
-  ) 
+    }), catchError(()=> {
+      console.log('error checking admin')
+      return of(this.router.createUrlTree(['/']));
+    }))
   }
 }

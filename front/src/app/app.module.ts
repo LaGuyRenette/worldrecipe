@@ -18,6 +18,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { AccountComponent } from './public/account/account/account.component';
 import { LoginComponent } from './public/account/login/login.component';
 import { RegisterComponent } from './public/account/register/register.component';
+import { NavigationEnd, Router } from '@angular/router';
 
 
 
@@ -51,10 +52,18 @@ import { RegisterComponent } from './public/account/register/register.component'
   bootstrap: [AppComponent]
 })
 export class AppModule implements OnInit {
+  
+  currentRoute: string = '/';
   constructor( 
-    private authService : AuthService)
-  {}
+    private router: Router)
+  {
+    router.events.subscribe(event => {
+      if(event instanceof NavigationEnd){
+        this.currentRoute = event.url;          
+        console.log(event);
+      }
+    });
+  }
  ngOnInit(){
-   this.authService.handleLoginStatus();
  }
   }

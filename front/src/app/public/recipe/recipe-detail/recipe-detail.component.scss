@@ -1,61 +1,84 @@
 .recipe-content {
     display: flex;
     flex-direction: column;
-    padding:7rem;
+    padding: 7rem;
+}
+
+.aperçu-recipe-section {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    background-color: #0D382E;
+    margin-top: 2rem;
+
+    h3,
+    h4,
+    h5 {
+        color: white;
+        margin-bottom: auto;
+    }
+}
+
+.ingredient-recipe-section {
+    display: flex;
+    flex-direction: column;
+    background-color: #A3C5C9;
+    padding: 2rem;
+
+}
+
+.steps-recipe-section {
+    display: flex;
+    flex-direction: column;
+    background-color: #D7A35B;
+    padding: 2rem;
+}
+    .button-nav-recipe-detail {
+        color: #0D382E;
+        background-color: transparent;
+        writing-mode: vertical-rl;
     }
 
-    .aperçu-recipe-section {
+    .button-nav-recipe-ingredients {
+
+        color: #A3C5C9;
+        background-color: transparent;
+        writing-mode: vertical-rl;
+    }
+    .button-nav-recipe-steps {
+        color: #D7A35B;
+        background-color: transparent;
+        writing-mode: vertical-rl;
+    }
+
+
+
+.recipe-detail-container {
+    display: flex;
+    flex-direction: row;
+
+    .nav {
         display: flex;
         flex-direction: column;
-        padding: 2rem;
-        background-color: #0D382E;
-        margin-top: 2rem;
-
-        h3,
-        h4,
-        h5 {
-            color: white;
-            margin-bottom: auto;
-        }
-    }
-
-    .ingredient-recipe-section {
-        display: flex;
-        flex-direction: column;
-        background-color: #A3C5C9;
-        padding: 2rem;
-    }
-
-    .steps-recipe-section {
-        display: flex;
-        flex-direction: column;
-        background-color: #D7A35B;
-        padding: 2rem;
-    }
-    .nav-recipe {
-        height: 2rem;
-        padding-bottom: 1rem;
         position: fixed;
-        background-color: white;
-        width: 100vw;
-        left:0;
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
         .button-nav-recipe-detail {
             color: #0D382E;
             background-color: transparent;
+            writing-mode: vertical-rl;
         }
 
         .button-nav-recipe-ingredients {
 
             color: #A3C5C9;
             background-color: transparent;
+            writing-mode: vertical-rl;
 
         }
 
         .button-nav-recipe-steps {
             color: #D7A35B;
             background-color: transparent;
+            writing-mode: vertical-rl;
         }
+    }
 }

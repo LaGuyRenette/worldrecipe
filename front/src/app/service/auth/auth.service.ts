@@ -3,7 +3,6 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import {  Observable, tap } from 'rxjs';
 import { environment } from 'src/environment/environment.developement';
-import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +15,8 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private cookieService: CookieService,
     ) {
-     this.handleLoginStatus();
+    //  this.handleLoginStatus();
      }
 
     register(credentials: FormGroup): Observable<any>{
@@ -44,7 +42,7 @@ export class AuthService {
     }
 
     isAdmin():Observable<any>{
-      console.log('inside Authservice is admin')
+      console.log('inside AuthserviceAdmin')
       return this.http.get(`${environment.API}admin`);
     }
   

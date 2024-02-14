@@ -2,6 +2,22 @@
     display: flex;
     justify-content: center;
     gap: 2rem;
+    .home{
+        display:flex;
+        align-items: center;
+    }
+    .dashboard{
+        display:flex;
+        align-items: center;
+    }
+    .recipes{
+        display:flex;
+        align-items: center;  
+    }
+    .account{
+        display:flex;
+        align-items: center;  
+    }
     a{
         color:black;
         padding-top:10px;
@@ -9,8 +25,18 @@
         transition: border-top-color 0.3 ease ;
         border-top-left-radius: 2px;
         border-top-right-radius: 2px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     a:hover, a:active{
         border-top-color: #0D382E;
+    }
+}
+@media screen and (max-width: 700px) {
+    .navigation a {
+        text-indent: -9999px;
+        overflow: hidden;
+        white-space: nowrap;
     }
 }

@@ -9,9 +9,9 @@ import { AuthGuard } from '../guards/auth.guard';
 
 const routes: Routes = [
   { path: 'create-recipe', component: CreateRecipeComponent, canActivate:[AdminGuard] },
-  { path: 'update-recipe/:id', component: UpdateRecipeComponent },
-  { path: 'update-user', component: UpdateUserComponent },
-  { path :'dashboard', component: DashboardComponent }
+  { path: 'update-recipe/:id', component: UpdateRecipeComponent,canActivate:[AdminGuard]  },
+  { path: 'update-user', component: UpdateUserComponent , canActivate:[AdminGuard] },
+  { path :'dashboard', component: DashboardComponent, canActivate:[AdminGuard]  }
 ];
 
 @NgModule({

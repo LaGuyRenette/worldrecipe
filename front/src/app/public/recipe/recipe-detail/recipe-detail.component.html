@@ -1,10 +1,10 @@
-<article class="nav-recipe">
+<main class="recipe-detail-container">
+<section class="nav">
     <button class="button-nav-recipe-detail" (click)="goToOverview()">Aperçu</button>
     <button class="button-nav-recipe-ingredients" (click)="goToIngredient()">Ingredients</button>
     <button class="button-nav-recipe-steps" (click)="goToStep()">Étapes</button>
-</article>
+</section>
 <section class="recipe-content">
-
     <article #overviewSection class="aperçu-recipe-section">
         <h3>{{Recipe?.country}} - {{Recipe?.name}}</h3>
         <div *ngFor="let diet of Recipe.diets; let i = index">
@@ -31,3 +31,4 @@
         </div>
     </article>
 </section>
+</main>

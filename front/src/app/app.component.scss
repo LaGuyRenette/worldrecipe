@@ -1,12 +1,15 @@
 header{
     background-color: white;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-    height: 100px;
+    height: 120px;
     width: 100vw;
     z-index:1000;
     position: fixed;
     top:0;
     left: 0;
+    @media screen and (max-width: 700px) {
+        height:90px;
+    }
 }
 main{
     position:relative;
@@ -23,7 +26,7 @@ main{
         position: fixed;
         bottom:0;
         z-index:9999;
-        padding:2rem;
+        padding:1rem;
     }
 }
 @media (min-width: 768px){
@@ -38,5 +41,5 @@ footer{
     bottom:0;
     right:0;
     left:0;
-    margin-top:1rem;
+
 }

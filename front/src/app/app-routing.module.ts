@@ -8,17 +8,18 @@ import { AuthGuard } from './guards/auth.guard';
 import { AccountComponent } from './public/account/account/account.component';
 import { RegisterComponent } from './public/account/register/register.component';
 import { LoginComponent } from './public/account/login/login.component';
+import { AdminGuard } from './guards/admin.guard';
 
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'recipes', component: RecipeListComponent },
-  { path: 'recipe/:id', component: RecipeDetailComponent },
+  { path: 'recipes', component: RecipeListComponent , canActivate: [AuthGuard]},
+  { path: 'recipe/:id', component: RecipeDetailComponent , canActivate: [AuthGuard]},
   { path: 'account', component: AccountComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate:[AuthGuard] }
+  { path: 'admin', loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule), canActivate:[AdminGuard] }
 
 ];
 
