@@ -16,7 +16,6 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     ) {
-    //  this.handleLoginStatus();
      }
 
     register(credentials: FormGroup): Observable<any>{
@@ -41,9 +40,9 @@ export class AuthService {
         );
     }
 
-    isAdmin():Observable<any>{
+    isAdmin():Observable<boolean>{
       console.log('inside AuthserviceAdmin')
-      return this.http.get(`${environment.API}admin`);
+      return this.http.get<boolean>(`${environment.API}admin`);
     }
   
 

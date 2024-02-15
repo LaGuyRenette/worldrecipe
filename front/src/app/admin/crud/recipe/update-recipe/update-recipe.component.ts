@@ -170,6 +170,7 @@ export class UpdateRecipeComponent {
   //DELETE ITEMS
 
   deleteIngredient(index: number){
+    console.log('Suppression de l\'ingrédient à l\'index :', index);
     this.ingredientsFormArray.removeAt(index);
   }
 

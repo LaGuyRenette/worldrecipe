@@ -14,9 +14,9 @@ export class NavigationComponent {
     private authService: AuthService
   )
   {
+  
+    }
     
-  }
-
   onBack(){
     window.history.back();
   }

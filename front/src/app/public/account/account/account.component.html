@@ -9,6 +9,9 @@
     <article class="register-article">
         <button class="register"routerLink="/register"*ngIf="!isLogged">Inscription</button>
     </article>
+    <article class="dashboard">
+        <button class="login"routerLink="/dashboard"*ngIf="isLogged && isAdmin">dashboard</button>
+    </article>
     <article class="logout-article">
         <button class="logout" (click)="logout()"*ngIf="isLogged">deconnexion</button>
     </article>

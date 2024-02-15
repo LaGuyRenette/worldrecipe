@@ -18,11 +18,15 @@
 
     <article #ingredientSection class="ingredient-recipe-section">
         <h4>Ingredient</h4>
-        <div *ngFor="let ingredient of Recipe.ingredients; let i = index">
-            <h5>{{ingredient.category}}</h5>
-            <p>{{ingredient.quantity}} {{ingredient.unit}} {{ingredient.name}} </p>
-        </div>
+        <article *ngFor="let group of sortByCategory()">
+            <h4>{{group.category}}</h4>
+            <div *ngFor="let ingredient of group.ingredients">
+              <p>{{ingredient.quantity}} {{ingredient.unit}} {{ingredient.name}}</p>
+            </div>
+          </article>
     </article>
+
+
 
     <article #stepSection class="steps-recipe-section">
         <h4>Étapes</h4>

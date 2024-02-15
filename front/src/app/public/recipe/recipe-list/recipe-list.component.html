@@ -10,11 +10,11 @@
 
     <p>{{recipe.diet}}</p>
     <div *ngFor="let diet of recipe.diets; let i = index">
-        <p>{{diet.value}}</p>
+        <h4>{{diet.value}}</h4>
     </div>
-    <section class="ingredients section">
-        <div  *ngFor="let ingredient of recipe.ingredients; let i = index">
-                <p>{{ingredient.name}}</p>
+    <section class="ingredients-section">
+        <div *ngFor="let ingredient of recipe.ingredients; let i = index">
+                <p> {{ingredient.name}}, </p>
         </div>
     </section>
     <button (click)="goToRecipe(recipe._id)">voir</button>

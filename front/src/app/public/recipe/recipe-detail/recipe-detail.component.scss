@@ -1,62 +1,6 @@
-.recipe-content {
-    display: flex;
-    flex-direction: column;
-    padding: 7rem;
-}
-
-.aperçu-recipe-section {
-    display: flex;
-    flex-direction: column;
-    padding: 2rem;
-    background-color: #0D382E;
-    margin-top: 2rem;
-
-    h3,
-    h4,
-    h5 {
-        color: white;
-        margin-bottom: auto;
-    }
-}
-
-.ingredient-recipe-section {
-    display: flex;
-    flex-direction: column;
-    background-color: #A3C5C9;
-    padding: 2rem;
-
-}
-
-.steps-recipe-section {
-    display: flex;
-    flex-direction: column;
-    background-color: #D7A35B;
-    padding: 2rem;
-}
-    .button-nav-recipe-detail {
-        color: #0D382E;
-        background-color: transparent;
-        writing-mode: vertical-rl;
-    }
-
-    .button-nav-recipe-ingredients {
-
-        color: #A3C5C9;
-        background-color: transparent;
-        writing-mode: vertical-rl;
-    }
-    .button-nav-recipe-steps {
-        color: #D7A35B;
-        background-color: transparent;
-        writing-mode: vertical-rl;
-    }
-
 
 
 .recipe-detail-container {
-    display: flex;
-    flex-direction: row;
-
     .nav {
         display: flex;
         flex-direction: column;
@@ -69,16 +13,49 @@
 
         .button-nav-recipe-ingredients {
 
-            color: #A3C5C9;
+            color: #517a7e;
             background-color: transparent;
             writing-mode: vertical-rl;
 
         }
 
         .button-nav-recipe-steps {
-            color: #D7A35B;
+            color: #8f580b;
             background-color: transparent;
             writing-mode: vertical-rl;
         }
     }
+    .recipe-content {
+        display: flex;
+        flex-direction: column;
+        padding-right: 2rem;
+        padding-left: 2rem;
+        .aperçu-recipe-section {
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            background-color: #0D382E;
+            h3,
+            h4,
+            h5 {
+                color: white;
+                margin-bottom: auto;
+            }
+        }
+        
+        .ingredient-recipe-section {
+            display: flex;
+            flex-direction: column;
+            background-color: #d7e4e6;
+            padding: 2rem;
+        }
+        
+        .steps-recipe-section {
+            display: flex;
+            flex-direction: column;
+            background-color: #e1b77d;
+            padding: 2rem;
+        }
+    }
+    
 }

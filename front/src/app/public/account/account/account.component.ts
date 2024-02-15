@@ -10,6 +10,7 @@ import { NavigationComponent } from 'src/app/shared/navigation/navigation.compon
 })
 export class AccountComponent {
   isLogged: boolean = false;
+  isAdmin: boolean = false;
   showActionActions: boolean = false;
 
   constructor(
@@ -22,6 +23,7 @@ export class AccountComponent {
   ngOnInit(){
     this.authService.handleLoginStatus();
     this.authService.isLoggedEmitter.subscribe(res => this.isLogged = res);
+    this.authService.isAdmin().subscribe(res => this.isAdmin = res);
   }
   
   
