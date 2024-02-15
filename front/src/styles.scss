@@ -51,7 +51,7 @@ $yumami-theme: mat.define-light-theme((
 h1{
     font-family: 'Rubik';
     font-weight: 900 ;
-    font-size: 36px;
+    font-size: 3.6rem;
     color:rgb(30, 29, 29);
     text-transform: uppercase;
     text-align: center;
@@ -61,13 +61,13 @@ h2{
     font-family: 'Rubik';
     font-weight: 700 ;
     color:#0D382E;
-    font-size: 24px;
+    font-size: 2.4rem;
 }
 
 h3{
     font-family: 'Montserrat';
     font-weight: 600 ;
-    font-size: 20px;
+    font-size: 2rem;
     color:rgb(30, 29, 29);
     text-transform: uppercase;
 }
@@ -75,7 +75,7 @@ h3{
 h4{
     font-family: 'Rubik';
     font-weight: 300 ;
-    font-size: 18px;
+    font-size: 1.8rem;
     color:rgb(30, 29, 29);
     text-transform: uppercase;
 
@@ -84,14 +84,14 @@ h4{
 h5{
     font-family: 'Rubik';
     font-weight: 700 ;
-    font-size: 18px;
+    font-size: 1.8rem;
 
 }
 
 h6{
     font-family: 'Montserrat';
     font-weight: 500 ;
-    font-size: 16px;
+    font-size: 1.6rem;
     color:rgb(30, 29, 29);
     text-transform: uppercase;
 
@@ -100,32 +100,32 @@ h6{
 p{
     font-family: 'Montserrat';
     font-weight: 500 ;
-    font-size:  16px;
+    font-size:  1.5rem;
     color:rgb(30, 29, 29);
 
 }
 label{
     font-family: 'Montserrat';
     font-weight: 800 ;
-    font-size: 18px;
+    font-size: 1.8rem;
     color:rgb(30, 29, 29);
 }
 option{
     font-family: 'Montserrat';
     font-weight:400 ;
-    font-size: 14px;
+    font-size: 1.4rem;
     color:rgb(30, 29, 29);
 }
 
 select{
     font-family: 'Montserrat';
     font-weight:600 ;
-    font-size: 14px;
+    font-size: 1.4rem;
     color:rgb(30, 29, 29);
 }
 a{
     font-family: Rubik;
-    font-size: 16px;
+    font-size: 1.6;
     text-transform: uppercase;
     font-weight: 700;
     text-decoration: none;
@@ -136,16 +136,20 @@ a{
 button{
     border-radius: 5px;
     font-family: Rubik;
-    font-size: 15px;
+    font-size: 1.5rem;
     text-transform: uppercase;
     font-weight: 700;
     border: 0;
 }
 
 html, body { 
-    min-height: 100%; }
+    min-height: 100%;
+    font-size: 62.5%
+}
 body { 
     background-color: #faf8f2;
+    font-size: 1.6rem;
     margin: 1rem; 
     margin-top:6rem;
-    font-family: Roboto, "Helvetica Neue", sans-serif; }
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+}

@@ -1,18 +1,19 @@
-<section class="navigation">
+<nav class="navigation">
     <article class="back">
         <mat-icon (click)="onBack()"aria-label="retour en arrière" aria-hidden="false">arrow_back_ios</mat-icon>
     </article>
     <article class="home">
-        <mat-icon routerLink="/"aria-label="aller sur accueil" aria-hidden="false">home</mat-icon>
-        <a routerLink="/">Accueil</a>
+        <a routerLink="/"><mat-icon routerLink="/"aria-label="aller sur accueil" aria-hidden="false">home</mat-icon>
+        Accueil</a>
     </article>
-    
     <article class="recipes">
+        <a routerLink="/recipes">
         <mat-icon routerLink="/recipes" aria-label="voir les recettes" aria-hidden="false">restaurant_menu</mat-icon>
-        <a routerLink="/recipes">Recettes</a>
+        Recettes</a>
     </article>
     <article class="account">
+        <a routerLink="/account">
         <mat-icon routerLink="/account" aria-label="aller sur son compte" aria-hidden="false">account_circle</mat-icon>
-        <a routerLink="/account">Compte</a>
+        Compte</a>
     </article>
-</section>
+</nav>

@@ -1,42 +1,24 @@
-.navigation{
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    .home{
-        display:flex;
-        align-items: center;
-    }
-    .dashboard{
-        display:flex;
-        align-items: center;
-    }
-    .recipes{
-        display:flex;
-        align-items: center;  
-    }
-    .account{
-        display:flex;
-        align-items: center;  
-    }
-    a{
-        color:black;
-        padding-top:10px;
-        border-top: 4px solid transparent;
-        transition: border-top-color 0.3 ease ;
-        border-top-left-radius: 2px;
-        border-top-right-radius: 2px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    a:hover, a:active{
-        border-top-color: #0D382E;
-    }
-}
-@media screen and (max-width: 700px) {
-    .navigation a {
-        text-indent: -9999px;
-        overflow: hidden;
-        white-space: nowrap;
+@import '../../../assets/mixin/mixins.scss';
+
+nav {
+    @include flexDirectionJustifyAlign(row, center, center);
+    gap: 1rem;
+
+    .home a,
+    .recipes a,
+    .account a {
+        @include mobile {
+            font-size: 0;
+        }
+
+        @include tablet {
+            font-size: initial;
+        }
+
+        @include desktop {
+            font-size: initial;
+        }
+
+        @include flexDirectionJustifyAlign(row, center, center)
     }
 }
